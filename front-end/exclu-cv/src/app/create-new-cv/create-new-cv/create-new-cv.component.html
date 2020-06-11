@@ -1,0 +1,51 @@
+<!-- <ul id="content" #content class="nav nav-tabs pb-200 text-center" role="tablist">
+    <li class="nav-item">
+        <a class="nav-link" id="main" routerLink="/home/create/main" role="tab" aria-controls="main"
+            aria-selected="false" (click)="onClick($event)">Main
+            Information</a>
+    </li>
+    <li class=" nav-item">
+        <a class="nav-link" id="skills" routerLink="/home/create/skills" role="tab" aria-controls="skills"
+            aria-selected="false" (click)="onClick($event)">Skills</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="education" routerLink="/home/create/education" role="tab" aria-controls="education"
+            aria-selected="false" (click)="onClick($event)">Education</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="experience" routerLink="/home/create/experience" role="tab" aria-controls="experience"
+            aria-selected="false" (click)="onClick($event)">Work Experience</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" id="certificates" routerLink="/home/create/certificates" role="tab"
+            aria-controls="certificates" aria-selected="false" (click)="onClick($event)">Certificates</a>
+    </li>
+
+    <li class="nav-item">
+        <button class="btn btn-outline-primary ml-2 pt-0 pb-0 mt-1 mr-2" (click)="onCreate()">Create CV</button>
+    </li>
+</ul> -->
+
+<!-- <router-outlet></router-outlet> -->
+
+
+<mat-tab-group>
+    <mat-tab label="Main Information">
+        <app-main></app-main>
+    </mat-tab>
+    <mat-tab label="Skills">
+        <app-skills></app-skills>
+    </mat-tab>
+    <mat-tab label="Education">
+        <app-education></app-education>
+    </mat-tab>
+    <mat-tab label="Work Experience">
+        <app-experience></app-experience>
+    </mat-tab>
+    <mat-tab label="Certificates">
+        <app-certificates></app-certificates>
+    </mat-tab>
+    <mat-tab label="Create">
+        <button class="btn btn-outline-primary ml-2 pt-0 pb-0 mt-1 mr-2" (click)="onCreate()">Create CV</button>
+    </mat-tab>
+</mat-tab-group>

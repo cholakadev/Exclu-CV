@@ -1,0 +1,16 @@
+input.form-control{
+    background-color: white;
+}
+
+mat-label{
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #545d6a;
+}
+
+@media only screen and (max-width: 600px) {
+    button {
+      width: 100%;
+    }
+  }

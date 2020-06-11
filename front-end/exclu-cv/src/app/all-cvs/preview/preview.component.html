@@ -1,0 +1,111 @@
+<span class="action back material-icons" (click)="goBack()">
+    arrow_back
+</span>
+
+<span class="action download material-icons" (click)="onExportClick()">
+    save_alt
+</span>
+
+<div class="container" style="padding-top: 5%;">
+    <div class="row">
+        <div class="col-4">
+            <div class="profile-picture text-center">
+                <div *ngIf="userDetails?.profileImage!=null; else elseBlock">
+                    <img [src]="profileImage" alt="profile picture">
+                </div>
+                <ng-template #elseBlock>
+                    <img src="../../../../assets/default_photo.jpg" alt="profile picture">
+                </ng-template>
+            </div>
+        </div>
+        <div class="col-8">
+            <div class="names pb-3">
+                {{cv?.mainInformation.first_name}}
+                {{cv?.mainInformation.last_name}}
+            </div>
+            <div class="position">
+                {{cv?.mainInformation.position}}
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-4">
+
+            <div class="contact">
+                <p class="header">Contact</p>
+                <div style="padding-bottom: 5px;">
+                    <span>Email:</span>
+                    <div>
+                        {{cv?.mainInformation.email_address}}
+                    </div>
+                </div>
+                <div>
+                    <span>Location:</span>
+                    <div>
+                        {{cv?.mainInformation.location}}
+                    </div>
+                </div>
+            </div>
+            <hr />
+
+            <div class="languages">
+                <p class="header">Languages</p>
+            </div>
+            <hr />
+
+            <div class="skills">
+                <p class="header">Skills</p>
+                <div *ngFor="let s of cv?.skill">
+                    {{s.skill_name}} - {{s.skill_level}}
+                </div>
+                <hr />
+            </div>
+        </div>
+        <div class="vl"></div>
+        <div class="col-8">
+            <div class="summary">
+                <div class="header">Summary</div>
+                {{cv?.mainInformation.summary}}
+            </div>
+            <hr />
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="education">
+                        <div class="header">Education</div>
+                        <div class="institution">
+                            Institution: {{cv?.education.institution}}
+                        </div>
+                        <div class="years">
+                            Years active: {{cv?.education.start_date}} - {{cv?.education.end_date}}
+                        </div>
+                        <div class="course">Course: {{cv?.education.course}}</div>
+                    </div>
+
+                </div>
+
+                <div class="col-6">
+                    <div class="work-experience">
+                        <div class="header">Work Experience</div>
+                        <div class="company">
+                            Company: {{cv?.workExperience.company}}
+                        </div>
+                        <div class="position">
+                            Position: {{cv?.workExperience.position}}
+                        </div>
+                        <div class="project">
+                            Project: {{cv?.workExperience.project}}
+                        </div>
+                        <div class="technology">
+                            Technology: {{cv?.workExperience.skills}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <div class="certificates">
+                <div class="header">Certificates</div>
+            </div>
+        </div>
+    </div>

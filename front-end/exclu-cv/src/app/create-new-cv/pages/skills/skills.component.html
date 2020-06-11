@@ -1,0 +1,29 @@
+<form class="m-auto" style="width: 60%; padding-top: 5%;" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+    <div class="form-row">
+        <div class="form-group col-md-5">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Skill</mat-label>
+                <input placeholder="ex. Angular" ngModel matInput name="skill_name">
+            </mat-form-field>
+        </div>
+        <div class="form-group col-md-5">
+            <mat-form-field style="width: 100%;">
+                <mat-label>Level</mat-label>
+                <mat-select ngModel name="skill_level">
+                    <mat-option *ngFor="let level of levels" [value]="level.level_name">
+                        {{level.level_name}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button style="height: 37px;" class="add form-group col-md-2" mat-stroked-button color="primary">Add</button>
+    </div>
+</form>
+
+<!-- on hover popover with skill level -->
+<div class="m-auto" style="width: 50%; padding-top: 2%;">
+    <div *ngFor="let skill of localStorageSkills" class="badge badge-pill badge-warning  pt-1 pb-1 mr-2 mb-2">
+        {{skill.skill_name}}
+    </div>
+</div>

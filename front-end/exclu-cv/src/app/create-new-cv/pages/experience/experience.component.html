@@ -1,0 +1,87 @@
+<form [formGroup]="experienceForm" class="m-auto" style="width: 60%; padding-top: 5%;" #experience="ngForm"
+    (ngSubmit)="onSubmit(experience.value)">
+    <div class="row form-group">
+        <div class="col">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Company</mat-label>
+                <input matInput formControlName="company" [ngClass]="{'is-invalid': isSubmitted && f.company.errors }">
+                <mat-error *ngIf="isSubmitted && f.company.errors">
+                    <div *ngIf="f.company.errors.required">Company is required</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <mat-form-field style="width: 100%;">
+                <mat-label>Start Date</mat-label>
+                <input matInput [matDatepicker]="startDate" formControlName="start_date"
+                    [ngClass]="{ 'is-invalid': isSubmitted && f.start_date.errors }">
+                <mat-datepicker-toggle [for]="startDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #startDate startView="multi-year"></mat-datepicker>
+                <mat-error *ngIf="isSubmitted && f.start_date.errors">
+                    <div *ngIf="f.end_date.errors.required">Start date is required</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+            <mat-form-field style="width: 100%;">
+                <mat-label>End Date</mat-label>
+                <input matInput [matDatepicker]="endDate" formControlName="end_date"
+                    [ngClass]="{ 'is-invalid': isSubmitted && f.end_date.errors }">
+                <mat-datepicker-toggle [for]="endDate" matSuffix></mat-datepicker-toggle>
+                <mat-datepicker #endDate startView="multi-year"></mat-datepicker>
+                <mat-error *ngIf="isSubmitted && f.end_date.errors">
+                    <div *ngIf="f.end_date.errors.required">End date is required</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row form-group">
+        <div class="col">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Position</mat-label>
+                <input matInput formControlName="position"
+                    [ngClass]="{ 'is-invalid': isSubmitted && f.position.errors }">
+                <mat-error *ngIf="isSubmitted && f.position.errors">
+                    <div *ngIf="f.position.errors.required">Position is required</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+        <div class="col">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Project</mat-label>
+                <input matInput formControlName="project" [ngClass]="{ 'is-invalid': isSubmitted && f.project.errors }">
+                <mat-error *ngIf="isSubmitted && f.project.errors">
+                    <div *ngIf="f.project.errors.required">Project is required</div>
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <div class="form-row">
+        <div class="form-group col-md-10">
+            <mat-form-field class="example-full-width" style="width: 100%;">
+                <mat-label>Skill</mat-label>
+                <input matInput formControlName="skills" name="SkillName">
+            </mat-form-field>
+        </div>
+
+        <button style="height: 37px;" class="add form-group col-md-2" mat-stroked-button color="primary"
+            (click)="onAdd()">Add</button>
+
+        <div class="m-auto" style="width: 50%; padding-top: 2%;">
+            <p *ngFor="let skill of localStorageSkills" class="btn btn-outline-dark pt-0 pb-0 mr-2">{{skill.SkillName}}
+            </p>
+        </div>
+    </div>
+
+
+    <div class="form-group" style="text-align: center;">
+        <div class="form-group col-md-12">
+            <button mat-stroked-button color="primary">Save</button>
+        </div>
+    </div>
+</form>

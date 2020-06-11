@@ -1,0 +1,46 @@
+.container {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.names {
+    font-size: 50px;
+    padding-bottom: 10px;
+}
+
+span{
+    font-size: 16px;
+}
+
+.header{
+    font-size: 26px;
+    padding-bottom: 5px;
+}
+
+.vl {
+    border-left: 1px solid rgb(209, 209, 209);
+    height: 500px;
+    margin-left: -3px;
+    top: 0;
+  }
+
+  .position {
+      font-size: 18px;
+  }
+
+.back{
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.action{
+    cursor: pointer;
+    font-size: 30px;
+}
+
+img{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin-bottom: 3em;
+}
