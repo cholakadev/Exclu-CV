@@ -39,8 +39,11 @@ export class ProfileImageComponent implements OnInit {
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
 
+    console.log(fileToUpload.name);
+
     this.http.post('http://localhost:52856/api/upload/profile', formData, { reportProgress: true, observe: 'events' })
       .subscribe(event => {
+        console.log('subscribed');
         if (event.type === HttpEventType.UploadProgress) {
         }
         else if (event.type === HttpEventType.Response) {

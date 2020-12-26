@@ -1,11 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <AspNetCoreModuleName>AspNetCoreModule</AspNetCoreModuleName>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
     <PackageReference Include="Microsoft.AspNet.Identity.Core" Version="2.2.3" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
@@ -16,9 +18,14 @@
 
   <ItemGroup>
     <ProjectReference Include="..\exclucv.DAL\exclucv.DAL.csproj" />
+    <ProjectReference Include="..\exclucv.DataMapping\exclucv.DataMapping.csproj" />
+    <ProjectReference Include="..\exclucv.DomainModels\exclucv.DomainModels.csproj" />
+    <ProjectReference Include="..\exclucv.Repository\exclucv.Repository.csproj" />
+    <ProjectReference Include="..\exclucv.Services\exclucv.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Exceptions\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
 

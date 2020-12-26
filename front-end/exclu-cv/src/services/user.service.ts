@@ -15,7 +15,6 @@ export class UserService {
   readonly BaseURI = 'http://localhost:52856/api';
 
   formModel = this.fb.group({
-    UserName: ['', Validators.required],
     Email: ['', Validators.email],
     Passwords: this.fb.group({
       Password: ['', [Validators.required, Validators.minLength(4)]],
@@ -42,7 +41,6 @@ export class UserService {
 
   register() {
     var body = {
-      UserName: this.formModel.value.UserName,
       Email: this.formModel.value.Email,
       Password: this.formModel.value.Passwords.Password,
       ConfirmPassword: this.formModel.value.ConfirmPassword,

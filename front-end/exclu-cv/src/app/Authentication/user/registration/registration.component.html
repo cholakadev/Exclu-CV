@@ -1,12 +1,4 @@
 <form [formGroup]="service.formModel" autocomplete="off" (submit)="onSubmit()">
-    <div class="form-group required">
-        <label>Username</label>
-        <input class="form-control" formControlName="UserName">
-        <label class="text-danger"
-            *ngIf="service.formModel.get('UserName').touched  && service.formModel.get('UserName').errors?.required">
-            This field is required
-        </label>
-    </div>
     <div class="form-group">
         <label>Email</label>
         <input class="form-control" formControlName="Email">

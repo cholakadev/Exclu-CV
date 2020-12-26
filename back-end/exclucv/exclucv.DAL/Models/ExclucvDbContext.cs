@@ -36,8 +36,6 @@
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-
-            //builder.Entity<CvModel>().HasOne(e => e.ApplicationUser).WithMany(e => e.Cvs).HasForeignKey(e => e.ApplicationUserId);
         }
     }
 }

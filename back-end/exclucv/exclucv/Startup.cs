@@ -1,6 +1,13 @@
 ﻿namespace exclucv
 {
+    using AutoMapper;
+    using exclucv.DAL.Entities;
     using exclucv.DAL.Models;
+    using exclucv.DataMapping;
+    using exclucv.Repository.Repositories;
+    using exclucv.Repository.RepositoryContracts;
+    using exclucv.Services.ServiceContracts;
+    using exclucv.Services.Services;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -28,16 +35,30 @@
 
         public void ConfigureServices(IServiceCollection services)
         {
+            // Auto Mapper Configurations
+            var mapperConfig = new MapperConfiguration(mc =>
+            {
+                mc.AddProfile(new AutoMapping());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
+            services.AddSingleton(mapper);
+
             // Inject AppSetting
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<ExclucvDbContext>(options =>
+            // DbContext configuration
+            services.AddDbContext<exclucv_dbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
-            services.AddDefaultIdentity<ApplicationUser>()
-                .AddEntityFrameworkStores<ExclucvDbContext>();
+
+            // Repository configurations
+            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+
+            // Service configurations
+            services.AddScoped<IApplicationUserService, ApplicationUserService>();
 
             services.Configure<IdentityOptions>(options =>
             {

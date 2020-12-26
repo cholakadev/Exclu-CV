@@ -1,90 +1,63 @@
 ﻿namespace exclucv.Controllers
 {
-    using exclucv.DAL.Models;
-    using Microsoft.AspNetCore.Identity;
+    using AutoMapper;
+    using exclucv.DAL.Entities;
+    using exclucv.DomainModels.DomainModels;
+    using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
-    using Microsoft.Extensions.Options;
-    using Microsoft.IdentityModel.Tokens;
     using System;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-    using System.Text;
-    using System.Threading.Tasks;
 
     [Route("api/user")]
     [ApiController]
-    public class ApplicationUserController : ControllerBase
+    public class ApplicationUserController : Controller
     {
-        private UserManager<ApplicationUser> _userManager;
-        private SignInManager<ApplicationUser> _signInManager;
-        private readonly ApplicationSettings _appSettings;
+        private readonly IMapper _mapper;
+        private readonly IApplicationUserService _service;
 
-        public ApplicationUserController(UserManager<ApplicationUser> userManager,
-                                         SignInManager<ApplicationUser> signInManager,
-                                         IOptions<ApplicationSettings> appSettings)
+        public ApplicationUserController(IMapper mapper,
+                                         IApplicationUserService service)
         {
-            this._userManager = userManager;
-            this._signInManager = signInManager;
-            this._appSettings = appSettings.Value;
+            this._mapper = mapper;
+            this._service = service;
         }
 
         [HttpPost]
         [Route("registration")]
         // POST: /api/user/registration
-        public async Task<Object> Register(ApplicationUserModel model)
+        public IActionResult Register(RegisterModel model)
         {
-            var applicationUser = new ApplicationUser()
-            {
-                // We dont specify the password here because it should be encrypted.
-                UserName = model.UserName,
-                Email = model.Email
-            };
-
             try
             {
-                var result = await this._userManager.CreateAsync(applicationUser, model.Password); // Here we pass the password.
-                return Ok(result);
+                var user = new User()
+                {
+                    UserId = Guid.NewGuid(),
+                    Email = model.Email,
+                    Password = model.Password
+                };
+                var registeredUser = this._service.Register(user);
+                var mappedUser = this._mapper.Map<User, RegisterModelResponse>(registeredUser);
+
+                return Ok(new { message = "Successfully registered user", mappedUser });
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(new { message = ex.Message });
             }
         }
 
         [HttpPost]
         [Route("login")]
         // POST : /api/user/login
-        public async Task<IActionResult> Login(LoginModel model)
+        public IActionResult Login(DomainModels.DomainModels.LoginModel model)
         {
-            // Find the user by username from the model which is comming from the FE form.
-            var user = await _userManager.FindByNameAsync(model.UserName);
-
-            var userId = user.Id;
-
-            if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
+            try
             {
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                        new Claim("UserID", user.Id.ToString())
-                    }),
-                    Expires = DateTime.UtcNow.AddDays(1),
-                    SigningCredentials = new SigningCredentials(
-                        new SymmetricSecurityKey(
-                         Encoding.UTF8
-                         .GetBytes(this._appSettings.JWT_Secret)), SecurityAlgorithms.HmacSha256Signature)
-                };
-
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var securityToken = tokenHandler.CreateToken(tokenDescriptor);
-                var token = tokenHandler.WriteToken(securityToken);
-
+                var token = this._service.Login(model);
                 return Ok(new { token });
             }
-            else
+            catch (Exception ex)
             {
-                return BadRequest(new { message = "Username or password is incorrect." });
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

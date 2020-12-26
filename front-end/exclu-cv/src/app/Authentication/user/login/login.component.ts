@@ -11,7 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   formModel = {
-    UserName: '',
+    Email: '',
     Password: ''
   }
 
@@ -27,15 +27,16 @@ export class LoginComponent implements OnInit {
   onSubmit(form: NgForm) {
     this.service.login(form.value).subscribe(
       (response: any) => {
+        console.log(response);
         localStorage.setItem('token', response.token);
         this.router.navigateByUrl('/home/all');
       },
-      error => {
-        if (error.status == 400)
-          this.toastr.error('Incorrect username or password.', 'Authentication failed.');
-        else
-          console.log(error);
-      }
+      // error => {
+      //   if (error.status == 400)
+      //     this.toastr.error('Incorrect username or password.', 'Authentication failed.');
+      //   else
+      //     console.log(error);
+      // }
     );
   }
 
