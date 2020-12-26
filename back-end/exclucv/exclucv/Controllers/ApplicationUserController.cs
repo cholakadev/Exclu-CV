@@ -3,6 +3,7 @@
     using AutoMapper;
     using exclucv.DAL.Entities;
     using exclucv.DomainModels.DomainModels;
+    using exclucv.Errors.ResponseErrors;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -14,8 +15,7 @@
         private readonly IMapper _mapper;
         private readonly IApplicationUserService _service;
 
-        public ApplicationUserController(IMapper mapper,
-                                         IApplicationUserService service)
+        public ApplicationUserController(IMapper mapper, IApplicationUserService service)
         {
             this._mapper = mapper;
             this._service = service;
@@ -36,12 +36,11 @@
                 };
                 var registeredUser = this._service.Register(user);
                 var mappedUser = this._mapper.Map<User, RegisterModelResponse>(registeredUser);
-
-                return Ok(new { message = "Successfully registered user", mappedUser });
+                return Created(nameof(this.Register), mappedUser);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(406, new AbortedRegistrationError(ex.Message));
             }
         }
 
@@ -57,7 +56,7 @@
             }
             catch (Exception ex)
             {
-                return BadRequest(new { message = ex.Message });
+                return StatusCode(406, new AbortedRegistrationError(ex.Message));
             }
         }
     }
