@@ -11,16 +11,19 @@
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
         public string Message { get; private set; }
 
+        public bool Succeeded { get; private set; }
+
         public ApiError(int statusCode, string statusDescription)
         {
             this.StatusCode = statusCode;
             this.StatusDescription = statusDescription;
         }
 
-        public ApiError(int statusCode, string statusDescription, string message)
+        public ApiError(int statusCode, string statusDescription, string message, bool succeeded)
             : this(statusCode, statusDescription)
         {
             this.Message = message;
+            this.Succeeded = succeeded;
         }
     }
 }

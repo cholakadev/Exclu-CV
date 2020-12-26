@@ -1,0 +1,61 @@
+.container {
+    margin-top: 30px;
+    max-width: 70%;
+}
+
+form-control{
+    border: none;
+}
+
+textarea:hover, 
+input[type="text"]:hover, 
+textarea:active, 
+input[type="text"]:active, 
+textarea:focus, 
+input[type="text"]:focus,
+button:focus,
+button:active,
+button:hover,
+label:focus,
+.btn:active,
+.btn.active
+{
+    outline:0px !important;
+    -webkit-appearance:none;
+    box-shadow: none !important;
+}
+
+.password {
+    margin-top: 40px;
+}
+
+.auth-btn {
+    margin-top: 30px;
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-size: 18px;
+    color: white;
+    border-radius: 3.5px;
+    background-color: #26AD68;
+}
+
+.auth-btn:hover {
+    background-color: #1F8E55;
+    transition: ease-in-out .3s;
+}
+
+.register-options {
+    display: flex;
+    justify-content: space-around;
+}
+
+.mat-checkbox-inner-container input {
+    background-color: green;
+}
+
+@media screen and (max-width: 600px) {
+    .container {
+        max-width: 100%;
+    }
+}

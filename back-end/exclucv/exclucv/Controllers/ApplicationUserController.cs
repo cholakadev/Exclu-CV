@@ -40,7 +40,7 @@
             }
             catch (Exception ex)
             {
-                return StatusCode(406, new AbortedRegistrationError(ex.Message));
+                return StatusCode(406, new AbortedRegistrationError(ex.Message, false));
             }
         }
 
@@ -56,7 +56,7 @@
             }
             catch (Exception ex)
             {
-                return StatusCode(406, new AbortedRegistrationError(ex.Message));
+                return StatusCode(406, new AbortedRegistrationError(ex.Message, false));
             }
         }
     }

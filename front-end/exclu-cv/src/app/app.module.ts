@@ -12,9 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllCvsComponent } from './all-cvs/all-cvs/all-cvs.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { ToastrModule } from 'ngx-toastr';
-import { RegistrationComponent } from './Authentication/user/registration/registration.component';
-import { LoginComponent } from './Authentication/user/login/login.component';
-import { UserComponent } from './Authentication/user/user.component';
 import { UserService } from 'src/services/user.service';
 import { AuthInterceptor } from './Authentication/auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -22,16 +19,31 @@ import { CommonModule, DatePipe } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatTableModule } from '@angular/material/table';
+import { AuthDialogComponent } from './Authentication/dialogs/auth-dialog/auth-dialog.component';
+import { RouterModule } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatTabsModule } from '@angular/material/tabs';
+
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatListModule } from '@angular/material/list';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { HomePageComponent } from './Authentication/home-page/home-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AllCvsComponent,
-    RegistrationComponent,
-    LoginComponent,
-    UserComponent,
+    HomePageComponent,
     HomeComponent,
-    PreviewComponent
+    PreviewComponent,
+    AuthDialogComponent
   ],
   imports: [
     [ModalModule.forRoot()],
@@ -49,6 +61,26 @@ import { MatTableModule } from '@angular/material/table';
     MatDatepickerModule,
     MatNativeDateModule,
     MatTableModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    RouterModule,
+    BrowserAnimationsModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    MatTooltipModule,
+    MatListModule,
+    MatTabsModule,
+    MatCheckboxModule,
+    MatSidenavModule,
+    MatStepperModule,
+    MatIconModule,
+    MatSlideToggleModule,
   ],
   providers: [
     UserService, {

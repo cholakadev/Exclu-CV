@@ -1,0 +1,40 @@
+<mat-tab-group class="auth-group" mat-align-tabs="center" #tabs>
+    <mat-tab class="auth-tab" label="Log in">
+        <form class="container" [formGroup]="loginForm">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" formControlName="email" id="email">
+            </div>
+            <div class="form-group password">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password" id="password">
+            </div>
+            <div class="auth-btn login-btn" (click)="onSubmitLoginForm()">
+                <span>Log in</span>
+            </div>
+        </form>
+    </mat-tab>
+    <mat-tab class="auth-tab" label="Register">
+        <form class="container" [formGroup]="registerForm">
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" formControlName="email" id="email">
+                <small class="form-text text-muted">We'll never share your email with anyone.</small>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" formControlName="password" id="password">
+            </div>
+            <div class="register-options">
+                <div *ngFor="let item of perspectives;">
+                    <mat-checkbox color="primary" [checked]="selected === item.index" (change)="selected = item.index">
+                        {{item.perspectiveType}}
+                    </mat-checkbox>
+                </div>
+            </div>
+            <div class="auth-btn login-btn" (click)="onSubmitRegisterForm()">
+                <span>Register</span>
+            </div>
+        </form>
+    </mat-tab>
+</mat-tab-group>

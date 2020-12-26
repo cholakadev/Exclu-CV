@@ -39,14 +39,14 @@ export class UserService {
     }
   }
 
-  register() {
+  register(formData) {
     var body = {
       Email: this.formModel.value.Email,
       Password: this.formModel.value.Passwords.Password,
       ConfirmPassword: this.formModel.value.ConfirmPassword,
     }
 
-    return this.http.post(this.BaseURI + '/user/registration', body);
+    return this.http.post(this.BaseURI + '/user/registration', formData);
   }
 
   login(formData) {

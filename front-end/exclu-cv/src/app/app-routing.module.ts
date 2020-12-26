@@ -3,32 +3,19 @@ import { AllCvsComponent } from './all-cvs/all-cvs/all-cvs.component';
 import { HomeComponent } from './home/home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { LoginComponent } from './Authentication/user/login/login.component';
-import { RegistrationComponent } from './Authentication/user/registration/registration.component';
-import { UserComponent } from './Authentication/user/user.component';
-import { CreateNewCvComponent } from './create-new-cv/create-new-cv/create-new-cv.component';
+import { HomePageComponent } from './Authentication/home-page/home-page.component';
 import { PreviewComponent } from './all-cvs/preview/preview.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/user/registration',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
-    path: 'user',
-    component: UserComponent,
-    children: [
-      {
-        path: 'registration',
-        component: RegistrationComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      }
-    ]
+    path: 'home',
+    component: HomePageComponent
   },
   {
     path: 'home',
