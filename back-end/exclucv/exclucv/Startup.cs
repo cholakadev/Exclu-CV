@@ -8,6 +8,7 @@
     using exclucv.Repository.RepositoryContracts;
     using exclucv.Services.ServiceContracts;
     using exclucv.Services.Services;
+    using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -23,6 +24,7 @@
     using System;
     using System.IO;
     using System.Text;
+    using System.Threading.Tasks;
 
     public class Startup
     {
@@ -44,10 +46,34 @@
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
 
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = "Cookies";
+            }).AddCookie("Cookies", options =>
+            {
+                options.Cookie.Name = "auth_cookie";
+                options.Cookie.SameSite = SameSiteMode.None;
+                options.Events = new CookieAuthenticationEvents
+                {
+                    OnRedirectToLogin = redirectContext =>
+                    {
+                        redirectContext.HttpContext.Response.StatusCode = 401;
+                        return Task.CompletedTask;
+                    }
+                };
+            });
+
             // Inject AppSetting
             services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services
+                .AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            //services
+            //    .AddMvc(options => options
+            //        .Filters.Add<AutoValidateAntiforgeryTokenAttribute>())
+            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // DbContext configuration
             services.AddDbContext<exclucv_dbContext>(options =>
@@ -126,10 +152,16 @@
                 RequestPath = new PathString("/Resources")
             });
 
-            app.UseCors(builder =>
-            builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-                .AllowAnyMethod()
-                .AllowAnyHeader());
+            //app.UseCors(builder =>
+            //builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
+            //    .AllowAnyMethod()
+            //    .AllowAnyHeader());
+
+            app.UseCors(policy => policy.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
+                .AllowAnyOrigin()
+                .AllowCredentials()
+                .AllowAnyHeader()
+                .AllowAnyMethod());
 
             app.UseAuthentication();
 

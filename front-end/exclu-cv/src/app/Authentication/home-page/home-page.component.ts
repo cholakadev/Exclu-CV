@@ -1,25 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AuthDialogComponent } from '../dialogs/auth-dialog/auth-dialog.component';
 
 @Component({
   selector: 'app-user',
   templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent implements OnInit {
   public isUserAuthenticated: boolean = false;
+  public innerWidth: number;
 
-  constructor(public dialog: MatDialog) { }
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
+
     let token = localStorage.getItem('token');
     console.log(token);
     if (token) {
       this.isUserAuthenticated = !this.isUserAuthenticated;
       console.log(this.isUserAuthenticated);
-      document.getElementById('trial').style.display = "none";
-      document.getElementById('try-free').style.display = "none";
+      document.getElementById('trial').style.display = 'none';
+      document.getElementById('try-free').style.display = 'none';
     }
   }
 
@@ -39,5 +47,4 @@ export class HomePageComponent implements OnInit {
     window.location.reload();
     // this.router.navigate(['home']);
   }
-
 }

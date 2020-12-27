@@ -1,110 +1,143 @@
 <nav class="navbar navbar-expand-lg navbar-light exclucv-navigation">
-    <a class="navbar-brand" href="#">
-        <img class="logo" src="../../../assets/logo.png">
-    </a>
-    <button class="navbar-toggler border-0 collapsed position-relative" type="button" data-toggle="collapse"
-        data-target="#navbarSupportedContent">
-        <span> </span>
-        <span> </span>
-        <span> </span>
-    </button>
+  <a class="navbar-brand" href="#">
+    <img class="logo" src="../../../assets/logo2.png" />
+  </a>
+  <button
+    class="navbar-toggler border-0 collapsed position-relative"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarSupportedContent"
+  >
+    <span> </span>
+    <span> </span>
+    <span> </span>
+  </button>
 
-    <div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Why Exclucv?<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Features
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Solutions
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Pricing
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item" (click)="openDialog()">
-                <a class="nav-link">Company<span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item login-item" *ngIf="isUserAuthenticated; else elseBlock">
-                <a class="nav-link" (click)="logOut()">
-                    Log out
-                </a>
-            </li>
-            <ng-template #elseBlock>
-                <li class="nav-item login-item">
-                    <a class="nav-link" (click)="openDialog()">Log in</a>
-                </li>
-            </ng-template>
-            <li id="try-free" class="nav-item try-free-item" (click)="openDialog()">
-                <a class="nav-link try-free-btn">Try for free</a>
-            </li>
-        </ul>
-    </div>
+  <div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#"
+          >Why Exclucv?<span class="sr-only"></span
+        ></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Features
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Solutions
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Pricing
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item" (click)="openDialog()">
+        <a class="nav-link">Company<span class="sr-only"></span></a>
+      </li>
+      <li
+        class="nav-item login-item"
+        *ngIf="isUserAuthenticated; else elseBlock"
+      >
+        <a class="nav-link" (click)="logOut()"> Log out </a>
+      </li>
+      <ng-template #elseBlock>
+        <li class="nav-item login-item">
+          <a class="nav-link" (click)="openDialog()">Log in</a>
+        </li>
+      </ng-template>
+      <li id="try-free" class="nav-item try-free-item" (click)="openDialog()">
+        <a class="nav-link try-free-btn">Try for free</a>
+      </li>
+    </ul>
+  </div>
 </nav>
 <main class="container">
-    <div class="header">
-        Hire the most talanted experts or create a personal CV and get hired.
+  <div class="header">
+    Hire the most talanted experts or create a personal CV and get hired.
+  </div>
+  <div class="options">
+    <div class="employee-option" data-aos="fade-up">
+      Create personal CV and get hired by the company you suits perfect to.
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti quidem
+      quos autem delectus iure consequuntur enim, nesciunt amet? Perspiciatis
+      distinctio error, incidunt culpa natus minus repellat labore? Sit,
+      eligendi at. Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+      Vel, corrupti qui dolor consequatur natus, voluptate dignissimos sapiente
+      nemo doloremque repudiandae fugit error earum ad amet nostrum? Enim, amet
+      vel. Repellat. Lorem ipsum dolor sit amet consectetur adipisicing elit.
+      Accusamus officia quod ipsum ipsam! Nisi obcaecati minima hic culpa iusto,
+      praesentium repudiandae delectus libero dolor odio, quia nam tenetur
+      reiciendis numquam. Lorem ipsum dolor, sit amet consectetur adipisicing
+      elit. Ratione ipsa, repudiandae unde voluptates ducimus modi veniam sit
+      eum eius quod animi, quibusdam rem vitae cum ea fugiat debitis, tenetur
+      odio?
     </div>
-    <div class="options">
-        <div class="employee-option" data-aos="fade-up">
-            Create personal CV and get hired by the company you suits perfect to. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Corrupti quidem quos autem delectus iure consequuntur enim, nesciunt amet? Perspiciatis
-            distinctio error, incidunt culpa natus minus repellat labore? Sit, eligendi at. Lorem ipsum dolor, sit amet
-            consectetur adipisicing elit. Vel, corrupti qui dolor consequatur natus, voluptate dignissimos sapiente nemo
-            doloremque repudiandae fugit error earum ad amet nostrum? Enim, amet vel. Repellat. Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Accusamus officia quod ipsum ipsam! Nisi obcaecati minima hic culpa
-            iusto, praesentium repudiandae delectus libero dolor odio, quia nam tenetur reiciendis numquam. Lorem ipsum
-            dolor, sit amet consectetur adipisicing elit. Ratione ipsa, repudiandae unde voluptates ducimus modi veniam
-            sit eum eius quod animi, quibusdam rem vitae cum ea fugiat debitis, tenetur odio?
-        </div>
-        <span class="separator" data-aos="fade-down">
-        </span>
-        <div data-aos="fade-up">
-            Search for the perfect cadidate that suits your company. Lorem ipsum dolor sit amet,
-            consectetur adipisicing elit. Eos laboriosam quas fuga aliquid aspernatur suscipit ad nihil ipsum nulla? Ea
-            modi
-            at ratione molestiae autem sequi repellendus vel dolores nulla. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Ad autem harum eum hic consequatur labore explicabo ratione corporis odio incidunt!
-            Laboriosam
-            laudantium quisquam pariatur, aut enim ab nemo optio ipsum! Lorem ipsum dolor, sit amet consectetur
-            adipisicing
-            elit. Explicabo quo sapiente illo repellat fugiat magni quos voluptatibus minima! Dolores earum voluptatibus
-            esse blanditiis nisi quas dolorum tenetur dignissimos sint quia! Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Autem odio id repudiandae tenetur, repellendus tempore voluptatibus quia magni laborum
-            neque. Ad tempora excepturi accusamus ex laboriosam! Quam necessitatibus vel placeat!
-        </div>
+    <span class="separator" data-aos="fade-down"> </span>
+    <div data-aos="fade-up">
+      Search for the perfect cadidate that suits your company. Lorem ipsum dolor
+      sit amet, consectetur adipisicing elit. Eos laboriosam quas fuga aliquid
+      aspernatur suscipit ad nihil ipsum nulla? Ea modi at ratione molestiae
+      autem sequi repellendus vel dolores nulla. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Ad autem harum eum hic consequatur labore
+      explicabo ratione corporis odio incidunt! Laboriosam laudantium quisquam
+      pariatur, aut enim ab nemo optio ipsum! Lorem ipsum dolor, sit amet
+      consectetur adipisicing elit. Explicabo quo sapiente illo repellat fugiat
+      magni quos voluptatibus minima! Dolores earum voluptatibus esse blanditiis
+      nisi quas dolorum tenetur dignissimos sint quia! Lorem ipsum dolor sit
+      amet consectetur adipisicing elit. Autem odio id repudiandae tenetur,
+      repellendus tempore voluptatibus quia magni laborum neque. Ad tempora
+      excepturi accusamus ex laboriosam! Quam necessitatibus vel placeat!
     </div>
-    <div id="trial" class="trial-section">
-        <div class="trial-btn" (click)="openDialog()">
-            <span>Start 14-day free trial</span>
-        </div>
-        <div class="trial-span"><span>No credit card required</span></div>
+  </div>
+  <div id="trial" class="trial-section">
+    <div class="trial-btn" (click)="openDialog()">
+      <span>Start 14-day free trial</span>
     </div>
+    <div class="trial-span"><span>No credit card required</span></div>
+  </div>
 </main>
