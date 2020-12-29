@@ -65,7 +65,7 @@
         // POST : /api/user/currentUser
         public ActionResult<DomainModels.DomainModels.UserModel> GetUserInfo()
         {
-            Guid userId = Guid.Parse(this.GetUserId());
+            Guid userId = this.GetUserId();
             var user = this._service.GetUserInfo(userId);
 
             var mappedUser = this._mapper.Map<User, UserModel>(user);

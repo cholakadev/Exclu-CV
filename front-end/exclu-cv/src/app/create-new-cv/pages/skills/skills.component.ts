@@ -1,8 +1,11 @@
 import { GlobalConstants } from './../../../../environments/environment';
-import { ExclucvServiceService } from 'src/services/exclucv-service.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { ExclucvServiceService } from 'src/services/exclucv-service.service';
+import { ISkill } from 'src/interfaces/main';
 
 @Component({
   selector: 'app-skills',
@@ -14,10 +17,21 @@ export class SkillsComponent implements OnInit {
   localStorageSkills: any;
   skillsForm: FormGroup;
 
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
+  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
+  skills: any = [
+    {
+      Skill: 'Angular',
+    },
+  ];
+
   constructor(
-    private exclucvService: ExclucvServiceService,
     private toastr: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private service: ExclucvServiceService
   ) {}
 
   ngOnInit(): void {
@@ -35,5 +49,35 @@ export class SkillsComponent implements OnInit {
 
     localStorage.setItem('cv', JSON.stringify(GlobalConstants.cv));
     this.toastr.success('Successfully saved!');
+  }
+
+  add(event: MatChipInputEvent): void {
+    const input = event.input;
+    const value = event.value;
+
+    let skill: ISkill;
+    skill.Skill = value;
+
+    this.service.getAllSkills().subscribe((response) => {
+      console.log(response);
+    });
+
+    // Add our fruit
+    if ((value || '').trim()) {
+      this.skills.push({ name: value.trim() });
+    }
+
+    // Reset the input value
+    if (input) {
+      input.value = '';
+    }
+  }
+
+  remove(fruit: any): void {
+    const index = this.skills.indexOf(fruit);
+
+    if (index >= 0) {
+      this.skills.splice(index, 1);
+    }
   }
 }

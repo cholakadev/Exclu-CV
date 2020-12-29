@@ -78,10 +78,13 @@
             // Repository configurations
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
             services.AddScoped<IUploadRepository, UploadRepository>();
+            services.AddScoped<ITemplateRepository, TemplateRepository>();
+            services.AddScoped<ISkillsRepository, SkillsRepository>();
 
             // Service configurations
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
             services.AddScoped<IUploadService, UploadService>();
+            services.AddScoped<ISkillsService, SkillsService>();
 
             services.Configure<IdentityOptions>(options =>
             {

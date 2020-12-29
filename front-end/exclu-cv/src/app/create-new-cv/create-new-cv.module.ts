@@ -18,10 +18,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
-  declarations: [CreateNewCvComponent, MainComponent, SkillsComponent, EducationComponent, ExperienceComponent, CertificatesComponent, ProfileImageComponent],
+  declarations: [
+    CreateNewCvComponent,
+    MainComponent,
+    SkillsComponent,
+    EducationComponent,
+    ExperienceComponent,
+    CertificatesComponent,
+    ProfileImageComponent,
+  ],
   imports: [
     CommonModule,
     CreateNewCvRoutingModule,
@@ -35,6 +44,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatOptionModule,
     MatSelectModule,
     MatTabsModule,
-  ]
+    MatChipsModule,
+    MatIconModule,
+  ],
 })
-export class CreateNewCvModule { }
+export class CreateNewCvModule {}

@@ -1,24 +1,23 @@
 export interface IMainInformation {
-    FirstName: string;
-    MiddleName: string;
-    LastName: string;
-    EmailAddress: string;
-    Position: string;
-    Department: string;
-    Level: string;
-    Location: string;
-    Summary: string;
+  FirstName: string;
+  MiddleName: string;
+  LastName: string;
+  EmailAddress: string;
+  Position: string;
+  Department: string;
+  Level: string;
+  Location: string;
+  Summary: string;
 }
 
 export interface IDepartment {
-    DepartmentName: string;
+  DepartmentName: string;
 }
 
 export interface ILevel {
-    LevelName: string;
+  LevelName: string;
 }
 
 export interface ISkill {
-    SkillName: string;
-    SkilledLevel: string;
+  Skill: string;
 }

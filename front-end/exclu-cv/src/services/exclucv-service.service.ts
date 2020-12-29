@@ -29,8 +29,19 @@ export class ExclucvServiceService {
     return this._http.post<ICv>(this.baseUrl + '/user/cv', data);
   }
 
-  getAllSkills(): Observable<Array<ISkill>> {
-    return this._http.get<Array<ISkill>>(this.baseUrl + '/skills/all');
+  getAllSkills(): Observable<any> {
+    return this._http.get<any>(this.baseUrl + '/template/skill/all');
+  }
+
+  deleteSkill(data: string): Observable<string> {
+    return this._http.post<string>(
+      this.baseUrl + '/template/skill/delete',
+      data
+    );
+  }
+
+  addSkill(skill: ISkill): Observable<ISkill> {
+    return this._http.post<ISkill>(this.baseUrl + '/template/skill/add', skill);
   }
 
   deleteCv(id: number): Observable<any> {

@@ -7,17 +7,16 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-create-new-cv',
   templateUrl: './create-new-cv.component.html',
-  styleUrls: ['./create-new-cv.component.scss']
+  styleUrls: ['./create-new-cv.component.scss'],
 })
 export class CreateNewCvComponent {
-
   cv: ICv;
 
   constructor(
     private _exclucvService: ExclucvServiceService,
     private router: Router,
-    private toastr: ToastrService,
-  ) { }
+    private toastr: ToastrService
+  ) {}
 
   onClick(event) {
     var target = event.target || event.srcElement || event.currentTarget;
@@ -33,9 +32,8 @@ export class CreateNewCvComponent {
       localStorage.removeItem('cv');
       this.toastr.success('New CV Created!');
       setTimeout(() => {
-        this.router.navigate(["/home/all"])
-      }
-        , 1000);
+        this.router.navigate(['/home/all']);
+      }, 1000);
     }
   }
 
@@ -56,10 +54,16 @@ export class CreateNewCvComponent {
   }
 
   removeActiveClass() {
-    var matches = document.querySelectorAll("a");
-    matches.forEach(element => {
+    var matches = document.querySelectorAll('a');
+    matches.forEach((element) => {
       element.classList.remove('active');
     });
   }
 
+  getSkills() {
+    this._exclucvService.getAllSkills().subscribe((response) => {
+      // this.skills = response;
+      console.log(response);
+    });
+  }
 }
