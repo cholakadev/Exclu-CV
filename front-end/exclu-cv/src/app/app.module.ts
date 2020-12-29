@@ -1,3 +1,4 @@
+import { LoaderService } from './../services/loader.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { PreviewComponent } from './all-cvs/preview/preview.component';
 import { HomeComponent } from './home/home/home.component';
@@ -35,6 +36,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { HomePageComponent } from './Authentication/home-page/home-page.component';
+import { LoaderComponent } from './shared/loader/loader.component';
+
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { LoaderInterceptor } from './shared/loader/interceptors/loader.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +48,8 @@ import { HomePageComponent } from './Authentication/home-page/home-page.componen
     HomePageComponent,
     HomeComponent,
     PreviewComponent,
-    AuthDialogComponent
+    AuthDialogComponent,
+    LoaderComponent,
   ],
   imports: [
     [ModalModule.forRoot()],
@@ -81,15 +87,23 @@ import { HomePageComponent } from './Authentication/home-page/home-page.componen
     MatStepperModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatProgressSpinnerModule,
   ],
   providers: [
-    UserService, {
+    LoaderService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoaderInterceptor,
+      multi: true,
+    },
+    UserService,
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
     },
-    DatePipe
+    DatePipe,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

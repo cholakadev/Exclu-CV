@@ -7,6 +7,7 @@ namespace exclucv.DAL.Entities
     {
         public User()
         {
+            Contact = new HashSet<Contact>();
             Template = new HashSet<Template>();
         }
 
@@ -19,6 +20,7 @@ namespace exclucv.DAL.Entities
         public string Password { get; set; }
         public string ProfileImage { get; set; }
 
+        public virtual ICollection<Contact> Contact { get; set; }
         public virtual ICollection<Template> Template { get; set; }
     }
 }

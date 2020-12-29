@@ -1,3 +1,17 @@
-input.form-control{
-    background-color: white;
+input.form-control {
+  background-color: white;
+}
+
+.submit-btn {
+  width: 48%;
+  float: right;
+}
+
+.delete-btn {
+  width: 48%;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: row;
 }

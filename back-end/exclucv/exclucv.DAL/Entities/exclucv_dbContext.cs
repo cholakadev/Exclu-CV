@@ -15,6 +15,7 @@ namespace exclucv.DAL.Entities
         {
         }
 
+        public virtual DbSet<Contact> Contact { get; set; }
         public virtual DbSet<Education> Education { get; set; }
         public virtual DbSet<Experience> Experience { get; set; }
         public virtual DbSet<Skill> Skill { get; set; }
@@ -34,6 +35,22 @@ namespace exclucv.DAL.Entities
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+
+            modelBuilder.Entity<Contact>(entity =>
+            {
+                entity.Property(e => e.ContactId).ValueGeneratedNever();
+
+                entity.Property(e => e.Country).HasMaxLength(64);
+
+                entity.Property(e => e.PostalCode).HasMaxLength(32);
+
+                entity.Property(e => e.Town).HasMaxLength(64);
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Contact)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK__Contact__UserId__6FE99F9F");
+            });
 
             modelBuilder.Entity<Education>(entity =>
             {

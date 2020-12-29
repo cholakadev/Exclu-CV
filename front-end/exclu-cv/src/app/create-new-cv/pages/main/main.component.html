@@ -1,124 +1,121 @@
-<div class="m-auto" style="width: 60%; padding-top: 5%;">
-    <app-profile-image></app-profile-image>
+<div class="m-auto" class="templates-tab">
+  <app-profile-image></app-profile-image>
 
-    <form [formGroup]="mainInformationForm" #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
-        <div>
-            <div class="form-row">
-                <div class="form-group col-md-4">
-                    <mat-form-field class="example-full-width" style="width: 100%;">
-                        <mat-label>First name</mat-label>
-                        <input placeholder="ex. Marshall" matInput formControlName="first_name"
-                            [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }">
-                        <mat-error *ngIf="submitted && f.first_name.errors">
-                            <div *ngIf="f.first_name.errors.required">First name is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="form-group col-md-4">
-                    <mat-form-field class="example-full-width" style="width: 100%;">
-                        <mat-label>Middle name</mat-label>
-                        <input placeholder="ex. Bruce" matInput formControlName="middle_name"
-                            [ngClass]="{ 'is-invalid': submitted && f.middle_name.errors }">
-                        <mat-error *ngIf="submitted && f.middle_name.errors">
-                            <div *ngIf="f.middle_name.errors.required">Middle name is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-
-                <div class="form-group col-md-4">
-                    <mat-form-field class="example-full-width" style="width: 100%;">
-                        <mat-label>Last name</mat-label>
-                        <input placeholder="ex. Mathers" matInput formControlName="last_name"
-                            [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }">
-                        <mat-error *ngIf="submitted && f.last_name.errors">
-                            <div *ngIf="f.last_name.errors.required">Last name is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <mat-form-field class="example-full-width" style="width: 100%;">
-                    <mat-label>Email</mat-label>
-                    <input placeholder="example@ex.com" type="email" matInput formControlName="email_address"
-                        [ngClass]="{ 'is-invalid': submitted && f.email_address.errors }">
-                    <mat-error *ngIf="submitted && f.email_address.errors">
-                        <div *ngIf="f.email_address.errors.required">Email is required</div>
-                        <div *ngIf="f.email_address.errors.email_address">Please enter a valid email address</div>
-                    </mat-error>
-                </mat-form-field>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <mat-form-field class="example-full-width" style="width: 100%;">
-                        <mat-label>Position</mat-label>
-                        <input placeholder="ex. Junior Software Developer" matInput formControlName="position"
-                            [ngClass]="{ 'is-invalid': submitted && f.position.errors }">
-                        <mat-error *ngIf="submitted && f.position.errors">
-                            <div *ngIf="f.position.errors.required">Position is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="form-group col-md-6">
-                    <mat-form-field style="width: 100%;">
-                        <mat-label>Department</mat-label>
-                        <mat-select formControlName="department"
-                            [ngClass]="{ 'is-invalid': submitted && f.department.errors }">
-                            <mat-option *ngFor="let department of departments" [value]="department.department_name">
-                                {{department.department_name}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="submitted && f.department.errors">
-                            <div *ngIf="f.department.errors.required">Department is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <mat-form-field style="width: 100%;">
-                        <mat-label>Level</mat-label>
-                        <mat-select formControlName="level" [ngClass]="{ 'is-invalid': submitted && f.level.errors }">
-                            <mat-option *ngFor="let level of levels" [value]="level.level_name">
-                                {{level.level_name}}
-                            </mat-option>
-                        </mat-select>
-                        <mat-error *ngIf="submitted && f.level.errors">
-                            <div *ngIf="f.level.errors.required">Level is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-                <div class="form-group col-md-6">
-                    <mat-form-field class="example-full-width" style="width: 100%;">
-                        <mat-label>Location</mat-label>
-                        <input placeholder="ex. Sofia" matInput formControlName="location"
-                            [ngClass]="{ 'is-invalid': submitted && f.location.errors }">
-                        <mat-error *ngIf="submitted && f.location.errors">
-                            <div *ngIf="f.location.errors.required">Location is required</div>
-                        </mat-error>
-                    </mat-form-field>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <mat-form-field class="example-full-width" style="width: 100%;">
-                    <mat-label>Summary</mat-label>
-                    <textarea matInput placeholder="Say something good about yourself." formControlName="summary"
-                        rows="5" [ngClass]="{ 'is-invalid': submitted && f.summary.errors }"></textarea>
-                    <mat-error *ngIf="submitted && f.summary.errors" class="invalid-feedback">
-                        <div *ngIf="f.summary.errors.required">Summary is required</div>
-                    </mat-error>
-                </mat-form-field>
-            </div>
+  <form
+    [formGroup]="mainInformationForm"
+    #userPost="ngForm"
+    (ngSubmit)="onSubmit(userPost.value)"
+  >
+    <div>
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>First name</mat-label>
+            <input
+              placeholder="ex. Marshall"
+              matInput
+              formControlName="FirstName"
+              [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }"
+            />
+            <mat-error *ngIf="submitted && f.FirstName.errors">
+              <div *ngIf="f.FirstName.errors.required">
+                First name is required
+              </div>
+            </mat-error>
+          </mat-form-field>
         </div>
 
-        <div class="form-group" style="text-align: center;">
-            <div class="form-group col-md-12">
-                <button mat-stroked-button color="primary">Save</button>
-            </div>
+        <div class="form-group col-md-4">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>Middle name</mat-label>
+            <input
+              placeholder="ex. Bruce"
+              matInput
+              formControlName="MiddleName"
+            />
+          </mat-form-field>
         </div>
-    </form>
+
+        <div class="form-group col-md-4">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>Last name</mat-label>
+            <input
+              placeholder="ex. Mathers"
+              matInput
+              formControlName="LastName"
+              [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }"
+            />
+            <mat-error *ngIf="submitted && f.LastName.errors">
+              <div *ngIf="f.LastName.errors.required">
+                Last name is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>Country</mat-label>
+            <input
+              placeholder="ex. Bulgaria"
+              matInput
+              formControlName="Country"
+              [ngClass]="{ 'is-invalid': submitted && f.Country.errors }"
+            />
+            <mat-error *ngIf="submitted && f.Country.errors">
+              <div *ngIf="f.Country.errors.required">Country is required</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-6">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>Town</mat-label>
+            <input
+              placeholder="ex. Sofia"
+              matInput
+              formControlName="Town"
+              [ngClass]="{
+                'is-invalid': submitted && f.Town.errors
+              }"
+            />
+            <mat-error *ngIf="submitted && f.Town.errors">
+              <div *ngIf="f.Town.errors.required">Town is required</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <mat-form-field class="example-full-width" style="width: 100%">
+          <mat-label>Summary</mat-label>
+          <textarea
+            matInput
+            placeholder="Say something good about yourself."
+            formControlName="Summary"
+            rows="5"
+            [ngClass]="{ 'is-invalid': submitted && f.Summary.errors }"
+          ></textarea>
+          <mat-error
+            *ngIf="submitted && f.Summary.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.Summary.errors.required">Summary is required</div>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form-group btn-group">
+      <div class="form-group col-md-12">
+        <button class="submit-btn" mat-stroked-button color="primary">
+          Save
+        </button>
+        <button class="delete-btn" mat-stroked-button color="primary">
+          Delete
+        </button>
+      </div>
+    </div>
+  </form>
 </div>
