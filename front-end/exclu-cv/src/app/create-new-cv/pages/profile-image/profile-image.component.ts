@@ -5,29 +5,26 @@ import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-profile-image',
   templateUrl: './profile-image.component.html',
-  styleUrls: ['./profile-image.component.scss']
+  styleUrls: ['./profile-image.component.scss'],
 })
 export class ProfileImageComponent implements OnInit {
-
   profileImage: any;
   userDetails: any;
 
   @Output() public onUploadFinished = new EventEmitter();
 
-  constructor(private http: HttpClient,
-    private service: UserService,
-  ) { }
+  constructor(private http: HttpClient, private service: UserService) {}
 
   ngOnInit(): void {
-    this.service.getUserProfile().subscribe(
-      response => {
-        this.userDetails = response;
-        this.profileImage = `http://localhost:52856/${this.userDetails.profileImage}`;
-      },
-      error => {
-        console.log(error);
-      }
-    )
+    // this.service.getUserProfile().subscribe(
+    //   (response) => {
+    //     this.userDetails = response;
+    //     this.profileImage = `http://localhost:52856/${this.userDetails.profileImage}`;
+    //   },
+    //   (error) => {
+    //     console.log(error);
+    //   }
+    // );
   }
 
   public uploadFile = (files) => {
@@ -41,16 +38,18 @@ export class ProfileImageComponent implements OnInit {
 
     console.log(fileToUpload.name);
 
-    this.http.post('http://localhost:52856/api/upload/profile', formData, { reportProgress: true, observe: 'events' })
-      .subscribe(event => {
-        console.log('subscribed');
+    this.http
+      .post('http://localhost:52856/api/upload/profileImage', formData, {
+        reportProgress: true,
+        observe: 'events',
+      })
+      .subscribe((event) => {
+        console.log(event);
         if (event.type === HttpEventType.UploadProgress) {
-        }
-        else if (event.type === HttpEventType.Response) {
+        } else if (event.type === HttpEventType.Response) {
           this.onUploadFinished.emit(event.body);
         }
       });
-    window.location.reload();
-  }
-
+    // window.location.reload();
+  };
 }

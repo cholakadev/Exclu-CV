@@ -144,6 +144,10 @@ namespace exclucv.DAL.Entities
                 entity.Property(e => e.Password)
                     .IsRequired()
                     .HasMaxLength(512);
+
+                entity.Property(e => e.ProfileImage)
+                    .HasMaxLength(256)
+                    .HasDefaultValueSql("('Resources/Default/default.jpg')");
             });
         }
     }

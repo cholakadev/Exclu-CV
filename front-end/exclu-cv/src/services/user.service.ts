@@ -53,7 +53,6 @@ export class UserService {
 
   login(formData) {
     return this.http.post(this.BaseURI + '/user/login', formData);
-    //.pipe(switchMap((_) => this.http.get(this.BaseURI + '/antiforgery')));
   }
 
   getUserProfile() {

@@ -1,13 +1,27 @@
-<div class="row" style="margin-bottom: 15px;">
-    <div class="col-md-12 text-center">
-        <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display: none;">
-        <div>
-            <div *ngIf="userDetails?.profileImage!=null; else elseBlock">
-                <img [src]="profileImage" alt="profile picture" (click)="file.click()">
-            </div>
-            <ng-template #elseBlock>
-                <img src="../../../../assets/default_photo.jpg" alt="profile picture" (click)="file.click()">
-            </ng-template>
-        </div>
+<div class="row" style="margin-bottom: 15px">
+  <div class="col-md-12 text-center">
+    <input
+      type="file"
+      #file
+      placeholder="Choose file"
+      (change)="uploadFile(file.files)"
+      style="display: none"
+    />
+    <div>
+      <div *ngIf="userDetails?.profileImage != null; else elseBlock">
+        <img
+          [src]="profileImage"
+          alt="profile picture"
+          (click)="file.click()"
+        />
+      </div>
+      <ng-template #elseBlock>
+        <img
+          src="../../../../assets/default_photo.jpg"
+          alt="profile picture"
+          (click)="file.click()"
+        />
+      </ng-template>
     </div>
+  </div>
 </div>

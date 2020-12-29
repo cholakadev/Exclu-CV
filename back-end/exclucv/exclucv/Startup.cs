@@ -70,11 +70,6 @@
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            //services
-            //    .AddMvc(options => options
-            //        .Filters.Add<AutoValidateAntiforgeryTokenAttribute>())
-            //    .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-
             // DbContext configuration
             services.AddDbContext<exclucv_dbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
@@ -82,9 +77,11 @@
 
             // Repository configurations
             services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+            services.AddScoped<IUploadRepository, UploadRepository>();
 
             // Service configurations
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
+            services.AddScoped<IUploadService, UploadService>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -151,11 +148,6 @@
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
                 RequestPath = new PathString("/Resources")
             });
-
-            //app.UseCors(builder =>
-            //builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-            //    .AllowAnyMethod()
-            //    .AllowAnyHeader());
 
             app.UseCors(policy => policy.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
                 .AllowAnyOrigin()

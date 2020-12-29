@@ -1,68 +1,39 @@
 ﻿namespace exclucv.Controllers
 {
-    using exclucv.DAL.Models;
+    using exclucv.Errors.ResponseErrors;
+    using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
-    using System.IO;
     using System.Linq;
-    using System.Net.Http.Headers;
 
     [Route("api/upload")]
     [ApiController]
     public class UploadController : ControllerBase
     {
-        private readonly ExclucvDbContext _context;
+        private readonly IUploadService _service;
 
-        public UploadController(ExclucvDbContext context)
+        public UploadController(IUploadService service)
         {
-            this._context = context;
+            this._service = service;
         }
 
-        [Route("profile")]
+        [Route("profileImage")]
         [HttpPost, DisableRequestSizeLimit]
-        // POST: api/upload/profile
+        // POST: api/upload/profileImage
         public IActionResult UploadProfilePicture()
         {
             try
             {
                 var file = Request.Form.Files[0];
-                var folderName = Path.Combine("Resources", "Images");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
 
-                if (file.Length > 0)
-                {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(folderName, fileName);
+                var userId = this.User.Claims.FirstOrDefault(claimRecord => claimRecord.Type == "UserID").Value;
+                var imagePath = this._service.UploadProfileImage(Guid.Parse(userId), file);
 
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-
-                    var userId = this.User.Claims.FirstOrDefault(claimRecord => claimRecord.Type == "UserID").Value;
-
-                    foreach (var user in this._context.ApplicationUsers)
-                    {
-                        if (user.Id == userId)
-                        {
-                            user.ProfileImage = dbPath;
-                        }
-                    }
-
-                    this._context.SaveChanges();
-
-                    return Ok(new { dbPath });
-                }
-                else
-                {
-                    return BadRequest();
-                }
+                return Ok(new { imagePath });
             }
             catch (Exception ex)
             {
-
-                return StatusCode(500, $"Internal Server Error: {ex}");
+                return StatusCode(500, new AbortedUploadError(ex.Message, false));
             }
         }
     }
