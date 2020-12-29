@@ -2,6 +2,7 @@
 {
     using exclucv.DAL.Entities;
     using exclucv.Repository.RepositoryContracts;
+    using System;
     using System.Linq;
 
     public class ApplicationUserRepository : IApplicationUserRepository
@@ -15,6 +16,9 @@
 
         public User GetUserByEmail(string email)
             => this._context.User.FirstOrDefault(u => u.Email == email);
+
+        public User GetUserInfo(Guid userId)
+            => this._context.User.FirstOrDefault(u => u.UserId == userId);
 
         public bool IsExistingUser(string email)
         {

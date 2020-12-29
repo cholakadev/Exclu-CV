@@ -24,6 +24,23 @@
             this._appSettings = appSettings.Value;
         }
 
+        public User GetUserInfo(Guid userId)
+        {
+            if (userId == null)
+            {
+                throw new ArgumentNullException("User not found.");
+            }
+
+            var user = this._repository.GetUserInfo(userId);
+
+            if (user == null)
+            {
+                throw new ArgumentNullException("User not found.");
+            }
+
+            return user;
+        }
+
         public string Login(LoginModel loginModel)
         {
             if (!this._repository.IsExistingUser(loginModel.Email))

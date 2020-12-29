@@ -7,7 +7,7 @@
     {
         protected string GetUserId()
         {
-            return this.User.Claims.First(i => i.Type == "UserId").Value;
+            return this.User.Claims.FirstOrDefault(claimRecord => claimRecord.Type == "UserID").Value;
         }
     }
 }

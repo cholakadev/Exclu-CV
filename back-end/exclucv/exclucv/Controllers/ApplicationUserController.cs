@@ -10,7 +10,7 @@
 
     [Route("api/user")]
     [ApiController]
-    public class ApplicationUserController : Controller
+    public class ApplicationUserController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly IApplicationUserService _service;
@@ -58,6 +58,19 @@
             {
                 return StatusCode(406, new AbortedRegistrationError(ex.Message, false));
             }
+        }
+
+        [HttpGet]
+        [Route("currentUser")]
+        // POST : /api/user/currentUser
+        public ActionResult<DomainModels.DomainModels.UserModel> GetUserInfo()
+        {
+            Guid userId = Guid.Parse(this.GetUserId());
+            var user = this._service.GetUserInfo(userId);
+
+            var mappedUser = this._mapper.Map<User, UserModel>(user);
+
+            return mappedUser;
         }
     }
 }

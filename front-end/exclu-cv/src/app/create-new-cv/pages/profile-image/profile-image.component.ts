@@ -16,15 +16,15 @@ export class ProfileImageComponent implements OnInit {
   constructor(private http: HttpClient, private service: UserService) {}
 
   ngOnInit(): void {
-    // this.service.getUserProfile().subscribe(
-    //   (response) => {
-    //     this.userDetails = response;
-    //     this.profileImage = `http://localhost:52856/${this.userDetails.profileImage}`;
-    //   },
-    //   (error) => {
-    //     console.log(error);
-    //   }
-    // );
+    this.service.getCurrentUser().subscribe(
+      (response) => {
+        this.userDetails = response;
+        this.profileImage = `http://localhost:52856/${this.userDetails.profileImage}`;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 
   public uploadFile = (files) => {
@@ -50,6 +50,6 @@ export class ProfileImageComponent implements OnInit {
           this.onUploadFinished.emit(event.body);
         }
       });
-    // window.location.reload();
+    window.location.reload();
   };
 }

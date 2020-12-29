@@ -18,9 +18,10 @@ export class HomeComponent implements OnInit {
   constructor(private router: Router, private service: UserService) {}
 
   ngOnInit(): void {
-    this.service.getUserProfile().subscribe(
+    this.service.getCurrentUser().subscribe(
       (response) => {
         this.userDetails = response;
+        console.log(response);
       },
       (error) => {
         console.log(error);

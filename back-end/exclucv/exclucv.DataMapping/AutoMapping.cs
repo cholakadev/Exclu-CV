@@ -9,6 +9,7 @@
         public AutoMapping()
         {
             CreateMap<User, RegisterModelResponse>();
+            CreateMap<User, UserModel>();
         }
     }
 }

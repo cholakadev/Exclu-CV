@@ -9,10 +9,9 @@ import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-preview',
   templateUrl: './preview.component.html',
-  styleUrls: ['./preview.component.scss']
+  styleUrls: ['./preview.component.scss'],
 })
 export class PreviewComponent implements OnInit {
-
   profileImage: any;
   userDetails: any;
 
@@ -28,33 +27,33 @@ export class PreviewComponent implements OnInit {
     private _router: Router,
     private route: ActivatedRoute,
     private _exclucvService: ExclucvServiceService,
-    private service: UserService,
-  ) { }
+    private service: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.service.getUserProfile().subscribe(
-      response => {
+    this.service.getCurrentUser().subscribe(
+      (response) => {
         this.userDetails = response;
         this.profileImage = `http://localhost:52856/${this.userDetails.profileImage}`;
       },
-      error => {
+      (error) => {
         console.log(error);
       }
-    )
+    );
 
-    this.routeSub = this.route.params.subscribe(params => {
+    this.routeSub = this.route.params.subscribe((params) => {
       this.currentCvId = params['id'];
-      console.log(this.currentCvId)
+      console.log(this.currentCvId);
     });
 
-    this._exclucvService.getAllCvs().subscribe((response => {
-      response.forEach(element => {
+    this._exclucvService.getAllCvs().subscribe((response) => {
+      response.forEach((element) => {
         if (element.id == this.currentCvId) {
           this.cv = element;
           console.log(this.cv);
         }
       });
-    }));
+    });
   }
 
   onExportClick() {
@@ -69,7 +68,6 @@ export class PreviewComponent implements OnInit {
   }
 
   goBack() {
-    this._router.navigate(["/home/all"])
+    this._router.navigate(['/home/all']);
   }
-
 }
