@@ -1,4 +1,3 @@
-import { ISkillLevel } from './../../../../interfaces/skills';
 import { GlobalConstants } from './../../../../environments/environment';
 import { ExclucvServiceService } from 'src/services/exclucv-service.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,30 +7,21 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 @Component({
   selector: 'app-skills',
   templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.scss']
+  styleUrls: ['./skills.component.scss'],
 })
 export class SkillsComponent implements OnInit {
-
-  levels: ISkillLevel[];
-
   isSubmitted = false;
-
   localStorageSkills: any;
-
   skillsForm: FormGroup;
 
   constructor(
     private exclucvService: ExclucvServiceService,
     private toastr: ToastrService,
     private formBuilder: FormBuilder
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.skillsForm = this.formBuilder.group({});
-
-    this.exclucvService.getSkillsLevel().subscribe((response => {
-      this.levels = response;
-    }));
   }
 
   onSubmit(data): any {
@@ -43,7 +33,7 @@ export class SkillsComponent implements OnInit {
 
     this.localStorageSkills = GlobalConstants.cv['skills'];
 
-    localStorage.setItem("cv", JSON.stringify(GlobalConstants.cv))
+    localStorage.setItem('cv', JSON.stringify(GlobalConstants.cv));
     this.toastr.success('Successfully saved!');
   }
 }

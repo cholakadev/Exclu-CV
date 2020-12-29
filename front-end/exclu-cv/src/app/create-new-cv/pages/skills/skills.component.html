@@ -10,16 +10,6 @@
         <input placeholder="ex. Angular" ngModel matInput name="skill_name" />
       </mat-form-field>
     </div>
-    <div class="form-group col-md-5">
-      <mat-form-field style="width: 100%">
-        <mat-label>Level</mat-label>
-        <mat-select ngModel name="skill_level">
-          <mat-option *ngFor="let level of levels" [value]="level.level_name">
-            {{ level.level_name }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
 
     <button
       style="height: 37px"
