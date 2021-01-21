@@ -26,13 +26,15 @@
             return skill.SkillId;
         }
 
-        public void DeleteSkill(Guid userId, Guid skillId)
+        public Guid DeleteSkill(Guid userId, Guid skillId)
         {
-            var template = this._context.Template.FirstOrDefault(t => t.UserId == userId);
+            //var template = this._context.Template.FirstOrDefault(t => t.UserId == userId);
             var skill = this._context.Skill.FirstOrDefault(s => s.SkillId == skillId);
 
             this._context.Remove(skill);
             this._context.SaveChanges();
+
+            return skill.SkillId;
         }
 
         public IEnumerable<Skill> GetAllSkills(Guid userId)

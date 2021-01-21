@@ -60,9 +60,11 @@ export class SkillsComponent implements OnInit {
     // Add our fruit
     if ((value || '').trim()) {
       let skl: ISkill = { skill1: value };
+
       if (this.skills === undefined) {
         this.skills = Array<ISkill>();
       }
+
       this.skills.push(skl);
       console.log(skl);
 
@@ -77,9 +79,13 @@ export class SkillsComponent implements OnInit {
     }
   }
 
-  remove(fruit: any): void {
-    const index = this.skills.indexOf(fruit);
+  remove(skill: any): void {
+    console.log(skill.skillId);
+    this.service.deleteSkill(skill.skillId).subscribe((response) => {
+      console.log(response);
+    });
 
+    const index = this.skills.indexOf(skill);
     if (index >= 0) {
       this.skills.splice(index, 1);
     }

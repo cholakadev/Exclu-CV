@@ -3,6 +3,7 @@
     using AutoMapper;
     using exclucv.DAL.Entities;
     using exclucv.DomainModels.DomainModels;
+    using exclucv.Errors.SuccessCodes;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -24,11 +25,12 @@
 
         [HttpPost]
         [Route("skill/delete")]
-        public ActionResult<Guid> DeleteSkill(Guid skillId)
+        public ActionResult<Guid> DeleteSkill(DeleteSkillRequest deleteSkillReq)
         {
             var userId = this.GetUserId();
-            this._skillsService.DeleteSkill(userId, skillId);
-            return userId;
+            Guid deletedSkillId = this._skillsService.DeleteSkill(userId, deleteSkillReq.SkillId);
+
+            return StatusCode(200, new SuccessfullyDeletedNotification($"Successfully deleted skill with Id {deletedSkillId}", true));
         }
 
         [HttpPost]

@@ -7,7 +7,7 @@
     public interface ISkillsRepository
     {
         Guid AddSkill(Guid userId, Skill skill);
-        void DeleteSkill(Guid userId, Guid skillId);
+        Guid DeleteSkill(Guid userId, Guid skillId);
         IEnumerable<Skill> GetAllSkills(Guid userId);
     }
 }

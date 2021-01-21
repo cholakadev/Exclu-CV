@@ -24,7 +24,7 @@
             return this._repository.AddSkill(userId, skill);
         }
 
-        public void DeleteSkill(Guid userId, Guid skillId)
+        public Guid DeleteSkill(Guid userId, Guid skillId)
             => this._repository.DeleteSkill(userId, skillId);
 
         public IEnumerable<Skill> GetAllSkills(Guid userId)

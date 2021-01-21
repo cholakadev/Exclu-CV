@@ -33,10 +33,13 @@ export class ExclucvServiceService {
     return this._http.get<any>(this.baseUrl + '/template/skill/all');
   }
 
-  deleteSkill(data: string): Observable<string> {
+  deleteSkill(skillId: string): Observable<string> {
+    var body = {
+      skillId: skillId,
+    };
     return this._http.post<string>(
       this.baseUrl + '/template/skill/delete',
-      data
+      body
     );
   }
 
