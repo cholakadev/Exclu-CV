@@ -3,6 +3,7 @@
     using AutoMapper;
     using exclucv.DAL.Entities;
     using exclucv.DomainModels.DomainModels;
+    using exclucv.Errors.ResponseErrors;
     using exclucv.Errors.SuccessCodes;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
@@ -55,7 +56,7 @@
             }
             catch (Exception ex)
             {
-                return BadRequest(ex.Message);
+                return StatusCode(700, new ApiError(700, ex.Message));
             }
         }
     }
