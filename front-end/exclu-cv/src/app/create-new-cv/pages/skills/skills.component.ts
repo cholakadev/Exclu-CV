@@ -45,8 +45,6 @@ export class SkillsComponent implements OnInit {
 
     GlobalConstants.cv['skills'].push(data);
 
-    console.log(data);
-
     this.localStorageSkills = GlobalConstants.cv['skills'];
 
     localStorage.setItem('cv', JSON.stringify(GlobalConstants.cv));
@@ -61,7 +59,7 @@ export class SkillsComponent implements OnInit {
 
     // Add our fruit
     if ((value || '').trim()) {
-      let skl: ISkill = { Skill1: value };
+      let skl: ISkill = { skill1: value };
       if (this.skills === undefined) {
         this.skills = Array<ISkill>();
       }

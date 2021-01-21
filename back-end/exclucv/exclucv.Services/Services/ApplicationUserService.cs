@@ -83,8 +83,10 @@
             if (this._repository.IsExistingUser(user.Email) == false)
             {
                 user.Password = PasswordCipher.Encode(user.Password);
+                var registeredUser = this._repository.Register(user);
                 this._templateService.CreateTemplate(user.UserId);
-                return this._repository.Register(user);
+
+                return registeredUser;
             }
             else
             {

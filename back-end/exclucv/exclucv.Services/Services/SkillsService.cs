@@ -20,6 +20,7 @@
 
         public Guid AddSkill(Guid userId, Skill skill)
         {
+            skill.SkillId = Guid.NewGuid();
             return this._repository.AddSkill(userId, skill);
         }
 
