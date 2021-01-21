@@ -21,12 +21,9 @@ export class SkillsComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  skill: ISkill;
   readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  skills: any = [
-    {
-      Skill: 'Angular',
-    },
-  ];
+  skills: Array<ISkill>;
 
   constructor(
     private toastr: ToastrService,
@@ -36,6 +33,11 @@ export class SkillsComponent implements OnInit {
 
   ngOnInit(): void {
     this.skillsForm = this.formBuilder.group({});
+
+    this.service.getAllSkills().subscribe((response) => {
+      this.skills = response;
+      console.log(response);
+    });
   }
 
   onSubmit(data): any {
@@ -55,16 +57,20 @@ export class SkillsComponent implements OnInit {
     const input = event.input;
     const value = event.value;
 
-    let skill: ISkill;
-    skill.Skill = value;
-
-    this.service.getAllSkills().subscribe((response) => {
-      console.log(response);
-    });
+    console.log(this.skills);
 
     // Add our fruit
     if ((value || '').trim()) {
-      this.skills.push({ name: value.trim() });
+      let skl: ISkill = { Skill1: value };
+      if (this.skills === undefined) {
+        this.skills = Array<ISkill>();
+      }
+      this.skills.push(skl);
+      console.log(skl);
+
+      this.service.addSkill(skl).subscribe((response) => {
+        console.log(response);
+      });
     }
 
     // Reset the input value

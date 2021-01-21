@@ -20,8 +20,7 @@
 
         public Guid AddSkill(Guid userId, Skill skill)
         {
-            Guid templateId = this._templateRepository.CreateTemplate(userId);
-            return this._repository.AddSkill(templateId, userId, skill);
+            return this._repository.AddSkill(userId, skill);
         }
 
         public void DeleteSkill(Guid userId, Guid skillId)

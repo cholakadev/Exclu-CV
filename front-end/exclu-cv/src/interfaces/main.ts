@@ -19,5 +19,5 @@ export interface ILevel {
 }
 
 export interface ISkill {
-  Skill: string;
+  Skill1: string;
 }

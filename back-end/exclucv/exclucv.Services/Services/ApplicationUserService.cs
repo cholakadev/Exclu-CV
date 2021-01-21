@@ -17,11 +17,15 @@
     {
         private readonly IApplicationUserRepository _repository;
         private readonly ApplicationSettings _appSettings;
+        private readonly ITemplateService _templateService;
 
-        public ApplicationUserService(IApplicationUserRepository repository, IOptions<ApplicationSettings> appSettings)
+        public ApplicationUserService(IApplicationUserRepository repository,
+                                      IOptions<ApplicationSettings> appSettings,
+                                      ITemplateService templateService)
         {
             this._repository = repository;
             this._appSettings = appSettings.Value;
+            this._templateService = templateService;
         }
 
         public User GetUserInfo(Guid userId)
@@ -79,6 +83,7 @@
             if (this._repository.IsExistingUser(user.Email) == false)
             {
                 user.Password = PasswordCipher.Encode(user.Password);
+                this._templateService.CreateTemplate(user.UserId);
                 return this._repository.Register(user);
             }
             else

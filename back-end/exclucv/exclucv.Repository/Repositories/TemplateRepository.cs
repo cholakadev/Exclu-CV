@@ -2,7 +2,6 @@
 using exclucv.DAL.Models.MainInfo;
 using exclucv.Repository.RepositoryContracts;
 using System;
-using System.Collections.Generic;
 
 namespace exclucv.Repository.Repositories
 {
@@ -20,28 +19,20 @@ namespace exclucv.Repository.Repositories
             throw new System.NotImplementedException();
         }
 
-        public Guid CreateTemplate(Guid userId)
+        public Guid CreateSummary(Summary summary)
         {
-            Template template = new Template()
-            {
-                TemplateId = Guid.NewGuid(),
-                UserId = userId
-            };
+            this._context.Summary.Add(summary);
+            this._context.SaveChanges();
 
+            return summary.SummaryId;
+        }
+
+        public Guid CreateTemplate(Template template)
+        {
             this._context.Template.Add(template);
             this._context.SaveChanges();
 
             return template.TemplateId;
-        }
-
-        public IEnumerable<Department> GetDepartments()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<Level> GetLevels()
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

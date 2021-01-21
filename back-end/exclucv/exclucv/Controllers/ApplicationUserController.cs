@@ -34,6 +34,7 @@
                     Email = model.Email,
                     Password = model.Password
                 };
+
                 var registeredUser = this._service.Register(user);
                 var mappedUser = this._mapper.Map<User, RegisterModelResponse>(registeredUser);
                 return Created(nameof(this.Register), mappedUser);

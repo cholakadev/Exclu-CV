@@ -15,14 +15,10 @@
             this._context = context;
         }
 
-        public Guid AddSkill(Guid templateId, Guid userId, Skill requestSkill)
+        public Guid AddSkill(Guid userId, Skill skill)
         {
-            Skill skill = new Skill()
-            {
-                SkillId = Guid.NewGuid(),
-                Skill1 = requestSkill.Skill1,
-                TemplateId = templateId
-            };
+            Template template = this._context.Template.FirstOrDefault(x => x.UserId == userId);
+            skill.TemplateId = template.TemplateId;
 
             this._context.Skill.Add(skill);
             this._context.SaveChanges();
