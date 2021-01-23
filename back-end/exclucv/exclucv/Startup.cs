@@ -86,6 +86,7 @@
             services.AddScoped<IUploadService, UploadService>();
             services.AddScoped<ISkillsService, SkillsService>();
             services.AddScoped<ITemplateService, TemplateService>();
+            services.AddScoped<IEducationService, EducationService>();
 
             services.Configure<IdentityOptions>(options =>
             {
