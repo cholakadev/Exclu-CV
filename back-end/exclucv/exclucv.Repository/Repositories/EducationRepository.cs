@@ -7,6 +7,13 @@
 
     public class EducationRepository : IEducationRepository
     {
+        private readonly exclucv_dbContext _context;
+
+        public EducationRepository(exclucv_dbContext context)
+        {
+            this._context = context;
+        }
+
         public void AddEducations(List<Education> educations)
         {
             throw new NotImplementedException();

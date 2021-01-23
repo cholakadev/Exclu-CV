@@ -49,7 +49,6 @@ export class AuthDialogComponent implements OnInit {
 
   onSubmitLoginForm() {
     this.service.login(this.loginForm.value).subscribe((response) => {
-      console.log(response);
       this.auth = response;
       localStorage.setItem('token', this.auth.token);
       this.dialog.close();

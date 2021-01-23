@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ICv } from 'src/interfaces/cv';
 import { Observable } from 'rxjs';
+import { IEducation } from 'src/interfaces/education';
 
 @Injectable({
   providedIn: 'root',
@@ -45,6 +46,13 @@ export class ExclucvServiceService {
 
   addSkill(skill: ISkill): Observable<ISkill> {
     return this._http.post<ISkill>(this.baseUrl + '/template/skill/add', skill);
+  }
+
+  addEducation(educations: Array<IEducation>): Observable<Array<IEducation>> {
+    return this._http.post<Array<IEducation>>(
+      this.baseUrl + '/education/add',
+      educations
+    );
   }
 
   deleteCv(id: number): Observable<any> {

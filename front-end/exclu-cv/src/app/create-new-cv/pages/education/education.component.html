@@ -2,7 +2,7 @@
   [formGroup]="educationForm"
   class="m-auto templates-tab"
   #education="ngForm"
-  (ngSubmit)="logValue()"
+  (ngSubmit)="submit()"
 >
   <button
     class="new-education-btn"
@@ -77,6 +77,11 @@
           </mat-form-field>
         </div>
       </div>
+      <div class="form-group">
+        <mat-checkbox formControlName="is_active" color="primary">
+          Currently studying here</mat-checkbox
+        >
+      </div>
       <div class="text-center">
         <mat-form-field
           class="example-full-width"
@@ -96,21 +101,42 @@
             </div>
           </mat-error>
         </mat-form-field>
-        <mat-form-field class="example-full-width" style="width: 100%">
-          <mat-label>Course</mat-label>
-          <input
-            matInput
-            formControlName="course"
-            [ngClass]="{
-              'is-invalid': submitted && educationControls.course.errors
-            }"
-          />
-          <mat-error *ngIf="submitted && educationControls.course.errors">
-            <div *ngIf="educationControls.course.errors.required">
-              Course is required
-            </div>
-          </mat-error>
-        </mat-form-field>
+        <div class="row form-group text-center">
+          <div class="col">
+            <mat-form-field class="example-full-width" style="width: 100%">
+              <mat-label>Class</mat-label>
+              <input
+                matInput
+                formControlName="class"
+                [ngClass]="{
+                  'is-invalid': submitted && educationControls.class.errors
+                }"
+              />
+              <mat-error *ngIf="submitted && educationControls.class.errors">
+                <div *ngIf="educationControls.class.errors.required">
+                  Class is required
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="col">
+            <mat-form-field class="example-full-width" style="width: 100%">
+              <mat-label>Degree</mat-label>
+              <input
+                matInput
+                formControlName="degree"
+                [ngClass]="{
+                  'is-invalid': submitted && educationControls.degree.errors
+                }"
+              />
+              <mat-error *ngIf="submitted && educationControls.degree.errors">
+                <div *ngIf="educationControls.degree.errors.required">
+                  Degree is required
+                </div>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
       </div>
     </div>
   </section>

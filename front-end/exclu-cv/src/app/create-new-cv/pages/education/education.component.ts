@@ -1,9 +1,11 @@
+import { ExclucvServiceService } from './../../../../services/exclucv-service.service';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GlobalConstants } from 'src/environments/environment';
 import { ToastrService } from 'ngx-toastr';
 import * as _moment from 'moment';
 import { default as _rollupMoment } from 'moment';
+import { IEducation } from 'src/interfaces/education';
 
 @Component({
   selector: 'app-education',
@@ -16,7 +18,10 @@ export class EducationComponent implements OnInit {
 
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, private toastr: ToastrService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private service: ExclucvServiceService
+  ) {
     this.educationForm = this.formBuilder.group({
       educations: this.formBuilder.array([]),
     });
@@ -31,9 +36,11 @@ export class EducationComponent implements OnInit {
   createEducation(): FormGroup {
     return this.formBuilder.group({
       start_date: ['', Validators.required],
-      end_date: ['', Validators.required],
+      end_date: [''],
       institution: ['', Validators.required],
-      course: ['', Validators.required],
+      class: ['', Validators.required],
+      degree: ['', Validators.required],
+      is_active: [null],
     });
   }
 
@@ -46,9 +53,12 @@ export class EducationComponent implements OnInit {
     this.educations.removeAt(i);
   }
 
-  logValue() {
-    console.log('logValue');
+  submit() {
     console.log(this.educations.value);
+    let educations: Array<IEducation> = this.educations.value;
+    this.service.addEducation(educations).subscribe((response) => {
+      console.log(response);
+    });
   }
 
   onSubmit(data): any {

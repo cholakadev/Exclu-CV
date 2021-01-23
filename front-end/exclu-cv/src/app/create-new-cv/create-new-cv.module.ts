@@ -1,3 +1,4 @@
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { AppModule } from './../app.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -46,6 +47,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatTabsModule,
     MatChipsModule,
     MatIconModule,
+    MatCheckboxModule,
   ],
 })
 export class CreateNewCvModule {}
