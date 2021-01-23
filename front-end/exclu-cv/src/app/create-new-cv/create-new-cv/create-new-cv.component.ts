@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { ICv } from 'src/interfaces/cv';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { ExclucvServiceService } from 'src/services/exclucv-service.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -10,6 +10,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./create-new-cv.component.scss'],
 })
 export class CreateNewCvComponent {
+  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
+    console.log('Processing beforeunload...');
+    event.returnValue = false;
+  }
+
   cv: ICv;
 
   constructor(

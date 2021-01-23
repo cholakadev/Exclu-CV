@@ -7,6 +7,10 @@ input.form-control {
   float: right;
 }
 
+.main-info {
+  width: 100%;
+}
+
 .delete-btn {
   width: 48%;
 }
@@ -14,4 +18,10 @@ input.form-control {
 .btn-group {
   display: flex;
   flex-direction: row;
+}
+
+@media only screen and (max-width: 600px) {
+  .main {
+    width: 100%;
+  }
 }
