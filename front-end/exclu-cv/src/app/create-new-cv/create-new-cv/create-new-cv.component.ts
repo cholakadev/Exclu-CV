@@ -10,7 +10,7 @@ import { MatTabGroup } from '@angular/material/tabs';
   templateUrl: './create-new-cv.component.html',
   styleUrls: ['./create-new-cv.component.scss'],
 })
-export class CreateNewCvComponent implements OnInit {
+export class CreateNewCvComponent {
   @ViewChild('templates', { static: false }) templateTab: MatTabGroup;
 
   @HostListener('click', ['$event.target'])
@@ -31,8 +31,6 @@ export class CreateNewCvComponent implements OnInit {
     console.log('tab_id' + tabId);
     this.templateTab.selectedIndex = tabId;
   }
-
-  ngOnInit() {}
 
   private setTabIndex(tabGroup: MatTabGroup) {
     if (!tabGroup || !(tabGroup instanceof MatTabGroup)) return;

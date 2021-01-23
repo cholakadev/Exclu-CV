@@ -11,6 +11,7 @@
     using System.IdentityModel.Tokens.Jwt;
     using System.Security.Claims;
     using System.Text;
+    using System.Threading.Tasks;
     using LoginModel = DomainModels.DomainModels.LoginModel;
 
     public class ApplicationUserService : IApplicationUserService
@@ -78,12 +79,12 @@
             return token;
         }
 
-        public User Register(User user)
+        public async Task<User> Register(User user)
         {
             if (this._repository.IsExistingUser(user.Email) == false)
             {
                 user.Password = PasswordCipher.Encode(user.Password);
-                var registeredUser = this._repository.Register(user);
+                var registeredUser = await this._repository.Register(user);
                 this._templateService.CreateTemplate(user.UserId);
 
                 return registeredUser;

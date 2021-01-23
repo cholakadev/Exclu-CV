@@ -7,6 +7,7 @@
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
+    using System.Threading.Tasks;
 
     [Route("api/user")]
     [ApiController]
@@ -24,7 +25,7 @@
         [HttpPost]
         [Route("registration")]
         // POST: /api/user/registration
-        public IActionResult Register(RegisterModel model)
+        public async Task<IActionResult> Register(RegisterModel model)
         {
             try
             {
@@ -35,7 +36,7 @@
                     Password = model.Password
                 };
 
-                var registeredUser = this._service.Register(user);
+                var registeredUser = await this._service.Register(user);
                 var mappedUser = this._mapper.Map<User, RegisterModelResponse>(registeredUser);
                 return Created(nameof(this.Register), mappedUser);
             }

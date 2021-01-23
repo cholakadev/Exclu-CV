@@ -31,7 +31,7 @@ export class HomeComponent implements OnInit {
 
   logOut() {
     localStorage.removeItem('token');
-    localStorage.removeItem('cv');
+    localStorage.removeItem('tab_id');
     this.router.navigate(['/home']);
   }
 }

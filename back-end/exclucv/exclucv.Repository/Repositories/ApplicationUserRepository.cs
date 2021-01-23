@@ -4,6 +4,7 @@
     using exclucv.Repository.RepositoryContracts;
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
     public class ApplicationUserRepository : IApplicationUserRepository
     {
@@ -32,12 +33,12 @@
             return true;
         }
 
-        public User Register(User user)
+        public async Task<User> Register(User user)
         {
             if (user != null)
             {
-                this._context.User.Add(user);
-                this._context.SaveChangesAsync();
+                await this._context.User.AddAsync(user);
+                await this._context.SaveChangesAsync();
             }
 
             return user;
