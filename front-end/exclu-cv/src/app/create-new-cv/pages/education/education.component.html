@@ -4,17 +4,27 @@
   #education="ngForm"
   (ngSubmit)="logValue()"
 >
-  <button type="button" class="btn btn-primary mb-2" (click)="addEducation()">
+  <button
+    class="new-education-btn"
+    type="button"
+    mat-stroked-button
+    color="primary"
+    (click)="addEducation()"
+  >
     New Education
   </button>
+  <hr class="form-separator" />
   <section
+    class="control-group"
     formArrayName="educations"
     *ngFor="let education of educationControls; let i = index"
   >
     <div [formGroupName]="i">
       <button
+        class="remove-education-btn"
         type="button"
-        class="btn btn-danger btn-sm"
+        mat-stroked-button
+        color="warn"
         (click)="removeEducation(i)"
       >
         Remove
@@ -68,7 +78,10 @@
         </div>
       </div>
       <div class="text-center">
-        <mat-form-field class="example-full-width" style="width: 100%">
+        <mat-form-field
+          class="example-full-width"
+          style="width: 100%; border: 0"
+        >
           <mat-label>Institution</mat-label>
           <input
             matInput
@@ -101,9 +114,9 @@
       </div>
     </div>
   </section>
-</form>
-<div class="form-group" style="text-align: center">
-  <div class="form-group col-md-12">
-    <button mat-stroked-button color="primary">Save</button>
+  <div class="form-group" style="text-align: center">
+    <div class="form-group col-md-12">
+      <button type="submit" mat-stroked-button color="primary">Save</button>
+    </div>
   </div>
-</div>
+</form>
