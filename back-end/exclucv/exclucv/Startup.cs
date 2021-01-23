@@ -80,6 +80,7 @@
             services.AddScoped<IUploadRepository, UploadRepository>();
             services.AddScoped<ITemplateRepository, TemplateRepository>();
             services.AddScoped<ISkillsRepository, SkillsRepository>();
+            services.AddScoped<IEducationRepository, EducationRepository>();
 
             // Service configurations
             services.AddScoped<IApplicationUserService, ApplicationUserService>();
