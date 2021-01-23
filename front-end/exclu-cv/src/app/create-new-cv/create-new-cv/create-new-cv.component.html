@@ -1,25 +1,15 @@
-<mat-tab-group>
+<mat-tab-group animationDuration="0ms" #templates>
   <mat-tab label="Main Information">
-    <app-main></app-main>
+    <app-main (click)="clickSelector()"></app-main>
   </mat-tab>
-  <mat-tab label="Skills" (click)="getSkills()">
+  <mat-tab label="Skills & Certificates">
     <app-skills></app-skills>
+    <app-certificates></app-certificates>
   </mat-tab>
   <mat-tab label="Education">
     <app-education></app-education>
   </mat-tab>
   <mat-tab label="Work Experience">
     <app-experience></app-experience>
-  </mat-tab>
-  <mat-tab label="Certificates">
-    <app-certificates></app-certificates>
-  </mat-tab>
-  <mat-tab label="Create">
-    <button
-      class="btn btn-outline-primary ml-2 pt-0 pb-0 mt-1 mr-2"
-      (click)="onCreate()"
-    >
-      Create CV
-    </button>
   </mat-tab>
 </mat-tab-group>

@@ -1,4 +1,3 @@
-import { Router } from '@angular/router';
 import { GlobalConstants } from './../../../../environments/environment';
 import { ExclucvServiceService } from '../../../../services/exclucv-service.service';
 import {
@@ -6,7 +5,7 @@ import {
   ILevel,
   IMainInformation,
 } from './../../../../interfaces/main';
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Input } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/services/user.service';

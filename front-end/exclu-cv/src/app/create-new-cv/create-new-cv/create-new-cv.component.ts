@@ -1,18 +1,21 @@
 import { Router } from '@angular/router';
 import { ICv } from 'src/interfaces/cv';
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ViewChild, OnInit } from '@angular/core';
 import { ExclucvServiceService } from 'src/services/exclucv-service.service';
 import { ToastrService } from 'ngx-toastr';
+import { MatTabGroup } from '@angular/material/tabs';
 
 @Component({
   selector: 'app-create-new-cv',
   templateUrl: './create-new-cv.component.html',
   styleUrls: ['./create-new-cv.component.scss'],
 })
-export class CreateNewCvComponent {
-  @HostListener('window:beforeunload', ['$event']) unloadHandler(event: Event) {
-    console.log('Processing beforeunload...');
-    event.returnValue = false;
+export class CreateNewCvComponent implements OnInit {
+  @ViewChild('templates', { static: false }) templateTab: MatTabGroup;
+
+  @HostListener('click', ['$event.target'])
+  clickSelector() {
+    this.setTabIndex(this.templateTab);
   }
 
   cv: ICv;
@@ -22,6 +25,19 @@ export class CreateNewCvComponent {
     private router: Router,
     private toastr: ToastrService
   ) {}
+
+  ngAfterViewInit() {
+    let tabId = parseInt(localStorage.getItem('tab_id'));
+    console.log('tab_id' + tabId);
+    this.templateTab.selectedIndex = tabId;
+  }
+
+  ngOnInit() {}
+
+  private setTabIndex(tabGroup: MatTabGroup) {
+    if (!tabGroup || !(tabGroup instanceof MatTabGroup)) return;
+    localStorage.setItem('tab_id', tabGroup.selectedIndex.toString());
+  }
 
   onClick(event) {
     var target = event.target || event.srcElement || event.currentTarget;
@@ -62,13 +78,6 @@ export class CreateNewCvComponent {
     var matches = document.querySelectorAll('a');
     matches.forEach((element) => {
       element.classList.remove('active');
-    });
-  }
-
-  getSkills() {
-    this._exclucvService.getAllSkills().subscribe((response) => {
-      // this.skills = response;
-      console.log(response);
     });
   }
 }

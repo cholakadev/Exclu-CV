@@ -8,12 +8,11 @@ import { UserService } from 'src/services/user.service';
 @Component({
   selector: 'app-auth-dialog',
   templateUrl: './auth-dialog.component.html',
-  styleUrls: ['./auth-dialog.component.scss']
+  styleUrls: ['./auth-dialog.component.scss'],
 })
 export class AuthDialogComponent implements OnInit {
-
   @Output() registerModel;
-  @ViewChild("tabs", { static: false }) loginTab: MatTabGroup;
+  @ViewChild('tabs', { static: false }) loginTab: MatTabGroup;
   auth: any;
 
   selected = -1;
@@ -21,39 +20,40 @@ export class AuthDialogComponent implements OnInit {
   registerForm: FormGroup;
   perspectives = [
     {
-      'index': 0,
-      'perspectiveType': 'Employer'
+      index: 0,
+      perspectiveType: 'Employer',
     },
     {
-      'index': 1,
-      'perspectiveType': 'Employee'
-    }
-  ]
+      index: 1,
+      perspectiveType: 'Employee',
+    },
+  ];
 
-  constructor(private router: Router,
+  constructor(
+    private router: Router,
     private service: UserService,
-    private dialog: MatDialogRef<AuthDialogComponent>) { }
+    private dialog: MatDialogRef<AuthDialogComponent>
+  ) {}
 
   ngOnInit(): void {
-
     this.loginForm = new FormGroup({
       email: new FormControl(''),
-      password: new FormControl('')
+      password: new FormControl(''),
     });
 
     this.registerForm = new FormGroup({
       email: new FormControl(''),
-      password: new FormControl('')
+      password: new FormControl(''),
     });
   }
 
   onSubmitLoginForm() {
-    this.service.login(this.loginForm.value).subscribe(response => {
+    this.service.login(this.loginForm.value).subscribe((response) => {
       console.log(response);
       this.auth = response;
       localStorage.setItem('token', this.auth.token);
       this.dialog.close();
-      this.router.navigate(['/home/create/main']);
+      this.router.navigate(['/home/create']);
     });
   }
 
@@ -61,12 +61,12 @@ export class AuthDialogComponent implements OnInit {
     this.registerModel = {
       email: this.registerForm.value.email,
       password: this.registerForm.value.password,
-    }
+    };
 
-    this.service.register(this.registerModel).subscribe(response => {
+    this.service.register(this.registerModel).subscribe((response) => {
       console.log(response);
       setTimeout(() => {
-        this.goToNextTabIndex(this.loginTab)
+        this.goToNextTabIndex(this.loginTab);
       }, 500);
       this.registerForm.reset();
     });
@@ -78,5 +78,4 @@ export class AuthDialogComponent implements OnInit {
     const tabCount = tabGroup._tabs.length;
     tabGroup.selectedIndex = (tabGroup.selectedIndex + 1) % tabCount;
   }
-
 }
