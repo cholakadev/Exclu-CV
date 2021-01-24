@@ -1,0 +1,9 @@
+.certificate-form {
+  width: 50%;
+}
+
+@media only screen and (max-width: 600px) {
+  .certificate-form {
+    width: 90%;
+  }
+}
