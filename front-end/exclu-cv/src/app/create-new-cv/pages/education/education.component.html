@@ -4,15 +4,17 @@
   #education="ngForm"
   (ngSubmit)="submit()"
 >
-  <button
-    class="new-education-btn"
-    type="button"
-    mat-stroked-button
-    color="primary"
-    (click)="addEducation()"
-  >
-    New Education
-  </button>
+  <div class="btn-wrapper">
+    <button
+      class="new-education-btn"
+      type="button"
+      mat-stroked-button
+      color="primary"
+      (click)="addEducation()"
+    >
+      New Education
+    </button>
+  </div>
   <hr class="form-separator" />
   <section
     class="control-group"

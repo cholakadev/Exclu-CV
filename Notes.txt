@@ -1,0 +1,7 @@
+Work experience - new table [Responsibilities] in the job
+Education - Campus groups column/new table
+Certificates view - to think about how they will be visible
+Certificates view - change the design (maybe choose to upload certificate with button) and use material design
+Main Information view - think about change profile image functionality (It's not user friendly, nobody will know how to change the photo) - maybe add a button somewhere
+Think about tablet and landscape design
+Better validation
