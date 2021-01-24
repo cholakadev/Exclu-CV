@@ -2,6 +2,7 @@
 {
     using AutoMapper;
     using exclucv.DAL.Entities;
+    using exclucv.DomainModels.DomainModels;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -22,9 +23,28 @@
 
         [HttpPost]
         [Route("add")]
-        public ActionResult AddEducations(List<Education> educations)
+        public ActionResult AddEducations(List<EducationModel> educationModels)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var educations = new List<Education>();
+
+                foreach (var educationModel in educationModels)
+                {
+                    var education = this._mapper.Map<EducationModel, Education>(educationModel);
+                    educations.Add(education);
+                }
+
+                var userId = this.GetUserId();
+                this._service.AddEducations(educations, userId);
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

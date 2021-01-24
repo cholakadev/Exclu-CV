@@ -71,7 +71,7 @@
         </div>
         <div class="form-group col-md-6">
           <mat-form-field class="example-full-width" style="width: 100%">
-            <mat-label>Town</mat-label>
+            <mat-label>Town/City</mat-label>
             <input
               placeholder="ex. Sofia"
               matInput
@@ -82,6 +82,41 @@
             />
             <mat-error *ngIf="submitted && f.Town.errors">
               <div *ngIf="f.Town.errors.required">Town is required</div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-10">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>Mobile Number</mat-label>
+            <input
+              matInput
+              formControlName="MobileNumber"
+              [ngClass]="{ 'is-invalid': submitted && f.MobileNumber.errors }"
+            />
+            <mat-error *ngIf="submitted && f.MobileNumber.errors">
+              <div *ngIf="f.MobileNumber.errors.required">
+                Mobile number is required
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-group col-md-2">
+          <mat-form-field class="example-full-width" style="width: 100%">
+            <mat-label>Postal Code</mat-label>
+            <input
+              matInput
+              formControlName="PostalCode"
+              [ngClass]="{
+                'is-invalid': submitted && f.PostalCode.errors
+              }"
+            />
+            <mat-error *ngIf="submitted && f.PostalCode.errors">
+              <div *ngIf="f.PostalCode.errors.required">
+                Postal code is required
+              </div>
             </mat-error>
           </mat-form-field>
         </div>

@@ -35,12 +35,12 @@ export class EducationComponent implements OnInit {
 
   createEducation(): FormGroup {
     return this.formBuilder.group({
-      start_date: [null, Validators.required],
-      end_date: [null],
-      institution: [null, Validators.required],
-      class: [null, Validators.required],
-      degree: [null, Validators.required],
-      is_active: [null],
+      StartDate: [null, Validators.required],
+      EndDate: [null],
+      Institution: [null, Validators.required],
+      Class: [null, Validators.required],
+      Degree: [null, Validators.required],
+      IsActive: [null],
     });
   }
 

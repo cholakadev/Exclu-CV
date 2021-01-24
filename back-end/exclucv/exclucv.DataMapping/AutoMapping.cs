@@ -10,9 +10,16 @@
         public AutoMapping()
         {
             CreateMap<User, RegisterModelResponse>();
+
             CreateMap<User, UserModel>();
+
             CreateMap<Skill, SkillModel>();
             CreateMap<List<Skill>, List<SkillModel>>();
+
+            CreateMap<Education, EducationModel>();
+            CreateMap<EducationModel, Education>();
+            CreateMap<List<Education>, List<EducationModel>>();
+            CreateMap<List<EducationModel>, List<Education>>();
         }
     }
 }

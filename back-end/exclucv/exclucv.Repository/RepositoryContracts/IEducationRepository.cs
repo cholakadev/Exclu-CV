@@ -6,7 +6,7 @@
 
     public interface IEducationRepository
     {
-        void AddEducations(List<Education> educations);
+        void AddEducations(List<Education> educations, Guid userId);
         Guid RemoveEducation(Guid educationId);
     }
 }

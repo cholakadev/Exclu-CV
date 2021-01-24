@@ -4,6 +4,7 @@
     using exclucv.Repository.RepositoryContracts;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class EducationRepository : IEducationRepository
     {
@@ -14,9 +15,17 @@
             this._context = context;
         }
 
-        public void AddEducations(List<Education> educations)
+        public void AddEducations(List<Education> educations, Guid userId)
         {
-            throw new NotImplementedException();
+            var currentUserTemplateId = this._context.Template.FirstOrDefault(x => x.UserId == userId).TemplateId;
+
+            foreach (var education in educations)
+            {
+                education.TemplateId = currentUserTemplateId;
+                this._context.Education.Add(education);
+            }
+
+            this._context.SaveChanges();
         }
 
         public Guid RemoveEducation(Guid educationId)

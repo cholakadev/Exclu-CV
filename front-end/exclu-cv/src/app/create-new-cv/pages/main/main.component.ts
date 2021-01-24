@@ -39,6 +39,8 @@ export class MainComponent implements OnInit {
       LastName: ['', Validators.required],
       Country: ['', [Validators.required]],
       Town: ['', Validators.required],
+      MobileNumber: ['', Validators.required],
+      PostalCode: ['', Validators.required],
       Summary: ['', Validators.required],
     });
 
