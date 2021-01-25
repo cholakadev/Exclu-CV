@@ -21,6 +21,7 @@
             {
                 education.EducationId = Guid.NewGuid();
             }
+
             this._educationRepository.AddEducations(educations, userId);
         }
 

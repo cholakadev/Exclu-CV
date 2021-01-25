@@ -31,7 +31,7 @@
             var userId = this.GetUserId();
             Guid deletedSkillId = this._skillsService.DeleteSkill(userId, deleteSkillReq.SkillId);
 
-            return StatusCode(200, new SuccessfullyDeletedNotification($"Successfully deleted skill with Id {deletedSkillId}", true));
+            return Ok(new SuccessfullyDeletedNotification($"Successfully deletes skill with id {deletedSkillId}"));
         }
 
         [HttpPost]

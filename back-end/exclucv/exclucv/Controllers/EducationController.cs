@@ -3,6 +3,8 @@
     using AutoMapper;
     using exclucv.DAL.Entities;
     using exclucv.DomainModels.DomainModels;
+    using exclucv.Errors.ResponseErrors;
+    using exclucv.Errors.SuccessCodes;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -27,6 +29,11 @@
         {
             try
             {
+                if (educationModels.Count == 0)
+                {
+                    throw new ArgumentNullException("Cannot insert empty array of educations.");
+                }
+
                 var educations = new List<Education>();
 
                 foreach (var educationModel in educationModels)
@@ -38,12 +45,11 @@
                 var userId = this.GetUserId();
                 this._service.AddEducations(educations, userId);
 
-                return Ok();
+                return Ok(new SuccessfullyInsertedValue("Successfully inserted educations."));
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                return StatusCode(406, new ApiError(406, ex.Message));
             }
         }
     }
