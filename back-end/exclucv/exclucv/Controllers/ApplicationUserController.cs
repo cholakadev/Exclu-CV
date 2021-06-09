@@ -34,6 +34,7 @@
                     UserId = Guid.NewGuid(),
                     Email = model.Email,
                     Password = model.Password
+
                 };
 
                 var registeredUser = await this._service.Register(user);
