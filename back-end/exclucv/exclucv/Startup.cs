@@ -3,6 +3,7 @@
     using AutoMapper;
     using exclucv.Business.Services;
     using exclucv.Core.ServiceContracts;
+    using exclucv.Data;
     using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Data.Models;
     using exclucv.Data.Repositories;

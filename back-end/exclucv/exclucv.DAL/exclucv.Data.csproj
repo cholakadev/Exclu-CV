@@ -12,6 +12,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.2.0" />
 		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
@@ -20,7 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\exclucv.Data.Contracts\exclucv.Data.Contracts.csproj" />
+		<ProjectReference Include="..\exclucv.Data.Contracts\exclucv.Data.Contracts.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,4 +1,4 @@
-﻿namespace exclucv.Services
+﻿namespace exclucv.Data
 {
     using AutoMapper;
     using exclucv.Data.Models;
