@@ -1,6 +1,6 @@
 ﻿namespace exclucv.Services.ServiceContracts
 {
-    using exclucv.DAL.Models;
+    using exclucv.Data.Models;
     using exclucv.DomainModels.DomainModels;
     using System;
     using System.Threading.Tasks;

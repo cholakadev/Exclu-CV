@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace exclucv.DAL.Models
+namespace exclucv.Data.Models
 {
     public partial class Experience
     {

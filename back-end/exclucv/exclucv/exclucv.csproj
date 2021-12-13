@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\exclucv.DAL\exclucv.DAL.csproj" />
+    <ProjectReference Include="..\exclucv.DAL\exclucv.Data.csproj" />
     <ProjectReference Include="..\exclucv.DataMapping\exclucv.DataMapping.csproj" />
     <ProjectReference Include="..\exclucv.DomainModels\exclucv.DomainModels.csproj" />
     <ProjectReference Include="..\exclucv.Errors\exclucv.Errors.csproj" />

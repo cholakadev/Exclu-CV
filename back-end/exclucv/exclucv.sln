@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv", "exclucv\exclucv.csproj", "{E7BA0CE9-1BCF-403A-BE72-6F7F3CE461DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.DAL", "exclucv.DAL\exclucv.DAL.csproj", "{2716E2B7-3495-46B6-8FF5-6EA90BC5A114}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Data", "exclucv.DAL\exclucv.Data.csproj", "{2716E2B7-3495-46B6-8FF5-6EA90BC5A114}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Repository", "exclucv.Repository\exclucv.Repository.csproj", "{0314CE26-F881-4C57-801D-D9B4261A5CA1}"
 EndProject
@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Utility", "exclucv.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Services", "exclucv.Services\exclucv.Services.csproj", "{7B2C68BE-BF64-45D6-893D-130304F8E991}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "exclucv.Errors", "exclucv.Errors\exclucv.Errors.csproj", "{2A1827AC-BD00-413C-A38B-184CE0978C34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Errors", "exclucv.Errors\exclucv.Errors.csproj", "{2A1827AC-BD00-413C-A38B-184CE0978C34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

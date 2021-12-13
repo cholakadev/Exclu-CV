@@ -1,7 +1,7 @@
 ﻿namespace exclucv.Controllers
 {
     using AutoMapper;
-    using exclucv.DAL.Models;
+    using exclucv.Data.Models;
     using exclucv.DomainModels.DomainModels;
     using exclucv.Errors.ResponseErrors;
     using exclucv.Services.ServiceContracts;

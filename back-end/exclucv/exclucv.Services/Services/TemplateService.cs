@@ -1,4 +1,4 @@
-﻿using exclucv.DAL.Models;
+﻿using exclucv.Data.Models;
 using exclucv.Repository.RepositoryContracts;
 using exclucv.Services.ServiceContracts;
 using System;

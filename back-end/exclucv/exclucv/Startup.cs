@@ -1,7 +1,7 @@
 ﻿namespace exclucv
 {
     using AutoMapper;
-    using exclucv.DAL.Models;
+    using exclucv.Data.Models;
     using exclucv.DataMapping;
     using exclucv.Repository.Repositories;
     using exclucv.Repository.RepositoryContracts;

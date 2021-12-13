@@ -1,6 +1,6 @@
 ﻿namespace exclucv.Services.Services
 {
-    using exclucv.DAL.Models;
+    using exclucv.Data.Models;
     using exclucv.Repository.RepositoryContracts;
     using exclucv.Security.UserSecurity.Password;
     using exclucv.Services.ServiceContracts;

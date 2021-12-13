@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\exclucv.DAL\exclucv.DAL.csproj" />
+    <ProjectReference Include="..\exclucv.DAL\exclucv.Data.csproj" />
     <ProjectReference Include="..\exclucv.DomainModels\exclucv.DomainModels.csproj" />
   </ItemGroup>
 

@@ -1,6 +1,6 @@
 ﻿namespace exclucv.Repository.RepositoryContracts
 {
-    using exclucv.DAL.Models;
+    using exclucv.Data.Models;
     using System;
     using System.Threading.Tasks;
 

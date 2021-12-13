@@ -1,6 +1,6 @@
 ﻿namespace exclucv.Repository.Repositories
 {
-    using exclucv.DAL.Models;
+    using exclucv.Data.Models;
     using exclucv.Repository.RepositoryContracts;
     using System;
     using System.Linq;

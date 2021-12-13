@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
-namespace exclucv.DAL.Models
+namespace exclucv.Data.Models
 {
     public partial class exclucvDb_10_DevContext : DbContext
     {
