@@ -1,46 +1,19 @@
-﻿namespace exclucv.Services.Services
+﻿namespace exclucv.Core.Services
 {
-    using exclucv.Data.Models;
-    using exclucv.Repository.RepositoryContracts;
+    using exclucv.Core.Http;
     using exclucv.Security.UserSecurity.Password;
-    using exclucv.Services.ServiceContracts;
-    using Microsoft.Extensions.Options;
-    using Microsoft.IdentityModel.Tokens;
     using System;
-    using System.IdentityModel.Tokens.Jwt;
-    using System.Security.Claims;
-    using System.Text;
     using System.Threading.Tasks;
-    using LoginModel = DomainModels.DomainModels.LoginModel;
+    using exclucv.Core.ServiceContracts;
+    using exclucv.Data.RepositoryContracts;
 
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _repository;
-        //private readonly ApplicationSettings _appSettings;
-        private readonly ITemplateService _templateService;
 
-        public AuthService(IAuthRepository repository,
-                                      ITemplateService templateService)
+        public AuthService(IAuthRepository repository)
         {
             this._repository = repository;
-            this._templateService = templateService;
-        }
-
-        public User GetUserInfo(Guid userId)
-        {
-            if (userId == null)
-            {
-                throw new ArgumentNullException("User not found.");
-            }
-
-            var user = this._repository.GetUserInfo(userId);
-
-            if (user == null)
-            {
-                throw new ArgumentNullException("User not found.");
-            }
-
-            return user;
         }
 
         //public string Login(LoginModel loginModel)
@@ -76,15 +49,15 @@
         //    return token;
         //}
 
-        public async Task<User> Register(User user)
+        public async Task<DomainModel.User> Register(RegisterRequest request)
         {
-            if (this._repository.IsExistingUser(user.Email) == false)
+            if (!this._repository.IsExistingUser(request.Email))
             {
-                user.Password = PasswordCipher.Encode(user.Password);
-                var registeredUser = await this._repository.Register(user);
+                request.Password = PasswordCipher.Encode(request.Password);
+                //var registeredUser = await this._repository.Register(user);
                 //this._templateService.CreateTemplate(user.Id);
 
-                return registeredUser;
+                return new DomainModel.User();
             }
             else
             {

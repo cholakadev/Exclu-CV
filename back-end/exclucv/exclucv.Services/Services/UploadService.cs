@@ -1,12 +1,12 @@
-﻿using exclucv.Repository.RepositoryContracts;
-using exclucv.Services.ServiceContracts;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.IO;
-using System.Net.Http.Headers;
-
-namespace exclucv.Services.Services
+﻿namespace exclucv.Services.Services
 {
+    using exclucv.Data.RepositoryContracts;
+    using exclucv.Services.ServiceContracts;
+    using Microsoft.AspNetCore.Http;
+    using System;
+    using System.IO;
+    using System.Net.Http.Headers;
+
     public class UploadService : IUploadService
     {
         private readonly IUploadRepository _repository;

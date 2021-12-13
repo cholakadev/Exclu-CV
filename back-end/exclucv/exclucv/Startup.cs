@@ -1,9 +1,11 @@
 ﻿namespace exclucv
 {
     using AutoMapper;
+    using exclucv.Core.ServiceContracts;
+    using exclucv.Core.Services;
     using exclucv.Data.Models;
-    using exclucv.Repository.Repositories;
-    using exclucv.Repository.RepositoryContracts;
+    using exclucv.Data.Repositories;
+    using exclucv.Data.RepositoryContracts;
     using exclucv.Services;
     using exclucv.Services.ServiceContracts;
     using exclucv.Services.Services;

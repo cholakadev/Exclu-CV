@@ -12,8 +12,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\exclucv.DAL\exclucv.Data.csproj" />
-    <ProjectReference Include="..\exclucv.DomainModels\exclucv.DomainModels.csproj" />
-    <ProjectReference Include="..\exclucv.Repository\exclucv.Repository.csproj" />
     <ProjectReference Include="..\exclucv.Security\exclucv.Security.csproj" />
   </ItemGroup>
 

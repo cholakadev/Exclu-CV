@@ -1,14 +1,13 @@
-﻿namespace exclucv.Services.ServiceContracts
+﻿namespace exclucv.Core.ServiceContracts
 {
-    using exclucv.Data.Models;
-    using exclucv.DomainModels.DomainModels;
+    using exclucv.Core.Http;
     using System;
     using System.Threading.Tasks;
 
     public interface IAuthService
     {
-        Task<Data.Models.User> Register(Data.Models.User user);
+        Task<DomainModel.User> Register(RegisterRequest user);
+
         //string Login(LoginModel loginModel);
-        Data.Models.User GetUserInfo(Guid userId);
     }
 }

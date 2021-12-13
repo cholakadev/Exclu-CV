@@ -1,10 +1,8 @@
-﻿using exclucv.Data.Models;
-using exclucv.Repository.RepositoryContracts;
-using exclucv.Services.ServiceContracts;
-using System;
-
-namespace exclucv.Services.Services
+﻿namespace exclucv.Services.Services
 {
+    using exclucv.Data.RepositoryContracts;
+    using exclucv.Services.ServiceContracts;
+
     public class TemplateService : ITemplateService
     {
         private readonly ITemplateRepository _repository;

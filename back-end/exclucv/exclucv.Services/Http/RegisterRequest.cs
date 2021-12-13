@@ -1,8 +1,8 @@
-﻿namespace exclucv.DomainModels.DomainModels
+﻿namespace exclucv.Core.Http
 {
     using exclucv.DomainModel.EnumTypes;
 
-    public class RegisterModel
+    public class RegisterRequest
     {
         public string Email { get; set; }
         public string Password { get; set; }

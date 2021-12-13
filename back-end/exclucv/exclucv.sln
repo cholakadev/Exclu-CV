@@ -7,15 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv", "exclucv\exclucv.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Data", "exclucv.DAL\exclucv.Data.csproj", "{2716E2B7-3495-46B6-8FF5-6EA90BC5A114}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Repository", "exclucv.Repository\exclucv.Repository.csproj", "{0314CE26-F881-4C57-801D-D9B4261A5CA1}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.DomainModels", "exclucv.DomainModels\exclucv.DomainModels.csproj", "{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Security", "exclucv.Security\exclucv.Security.csproj", "{58025C17-C24A-41B8-8160-91879B86B97B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Utility", "exclucv.Utility\exclucv.Utility.csproj", "{6475C097-E5BE-4069-BCD5-EF49B5EBF846}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Services", "exclucv.Services\exclucv.Services.csproj", "{7B2C68BE-BF64-45D6-893D-130304F8E991}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Core", "exclucv.Services\exclucv.Core.csproj", "{7B2C68BE-BF64-45D6-893D-130304F8E991}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Errors", "exclucv.Errors\exclucv.Errors.csproj", "{2A1827AC-BD00-413C-A38B-184CE0978C34}"
 EndProject
@@ -33,14 +29,6 @@ Global
 		{2716E2B7-3495-46B6-8FF5-6EA90BC5A114}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2716E2B7-3495-46B6-8FF5-6EA90BC5A114}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2716E2B7-3495-46B6-8FF5-6EA90BC5A114}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{58025C17-C24A-41B8-8160-91879B86B97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{58025C17-C24A-41B8-8160-91879B86B97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58025C17-C24A-41B8-8160-91879B86B97B}.Release|Any CPU.ActiveCfg = Release|Any CPU

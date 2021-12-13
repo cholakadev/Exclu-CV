@@ -8,13 +8,6 @@
     {
         public AutoMapping()
         {
-            CreateMap<Data.Models.User, DomainModel.RegisterModelResponse>();
-
-            //CreateMap<User, User>();
-
-            CreateMap<Skill, DomainModel.Skill>();
-            CreateMap<List<Skill>, List<DomainModel.Skill>>();
-
             CreateMap<Education, Education>();
             CreateMap<Education, Education>();
             CreateMap<List<Education>, List<Education>>();

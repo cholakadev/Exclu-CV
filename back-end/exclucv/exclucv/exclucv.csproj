@@ -26,10 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\exclucv.DomainModels\exclucv.DomainModels.csproj" />
     <ProjectReference Include="..\exclucv.Errors\exclucv.Errors.csproj" />
-    <ProjectReference Include="..\exclucv.Repository\exclucv.Repository.csproj" />
-    <ProjectReference Include="..\exclucv.Services\exclucv.Services.csproj" />
+    <ProjectReference Include="..\exclucv.Services\exclucv.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
