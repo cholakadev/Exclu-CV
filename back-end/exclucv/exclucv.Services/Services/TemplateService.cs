@@ -1,4 +1,4 @@
-﻿using exclucv.DAL.Entities;
+﻿using exclucv.DAL.Models;
 using exclucv.Repository.RepositoryContracts;
 using exclucv.Services.ServiceContracts;
 using System;
@@ -14,32 +14,20 @@ namespace exclucv.Services.Services
             this._repository = repository;
         }
 
-        public Guid CreateSummary(Guid userId)
-        {
-            Summary summary = new Summary()
-            {
-                SummaryId = Guid.NewGuid()
-            };
+        //public Guid CreateTemplate(Guid userId)
+        //{
+        //    var summaryId = this.CreateSummary(userId);
 
-            var summaryId = this._repository.CreateSummary(summary);
+        //    Template template = new Template()
+        //    {
+        //        TemplateId = Guid.NewGuid(),
+        //        UserId = userId,
+        //        SummaryId = summaryId
+        //    };
 
-            return summaryId;
-        }
+        //    var templateId = this._repository.CreateTemplate(template);
 
-        public Guid CreateTemplate(Guid userId)
-        {
-            var summaryId = this.CreateSummary(userId);
-
-            Template template = new Template()
-            {
-                TemplateId = Guid.NewGuid(),
-                UserId = userId,
-                SummaryId = summaryId
-            };
-
-            var templateId = this._repository.CreateTemplate(template);
-
-            return templateId;
-        }
+        //    return templateId;
+        //}
     }
 }

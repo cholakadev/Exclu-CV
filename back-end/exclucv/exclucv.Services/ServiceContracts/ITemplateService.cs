@@ -4,7 +4,6 @@
 
     public interface ITemplateService
     {
-        Guid CreateTemplate(Guid userId);
-        Guid CreateSummary(Guid userId);
+        //Guid CreateTemplate(Guid userId);
     }
 }

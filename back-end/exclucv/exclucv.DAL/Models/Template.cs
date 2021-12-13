@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace exclucv.DAL.Entities
+namespace exclucv.DAL.Models
 {
     public partial class Template
     {
@@ -12,11 +12,10 @@ namespace exclucv.DAL.Entities
             Skill = new HashSet<Skill>();
         }
 
-        public Guid TemplateId { get; set; }
-        public Guid? UserId { get; set; }
-        public Guid? SummaryId { get; set; }
+        public Guid Id { get; set; }
+        public string Summary { get; set; }
+        public Guid UserId { get; set; }
 
-        public virtual Summary Summary { get; set; }
         public virtual User User { get; set; }
         public virtual ICollection<Education> Education { get; set; }
         public virtual ICollection<Experience> Experience { get; set; }

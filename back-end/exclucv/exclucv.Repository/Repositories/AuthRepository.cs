@@ -1,16 +1,16 @@
 ﻿namespace exclucv.Repository.Repositories
 {
-    using exclucv.DAL.Entities;
+    using exclucv.DAL.Models;
     using exclucv.Repository.RepositoryContracts;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class ApplicationUserRepository : IApplicationUserRepository
+    public class AuthRepository : IAuthRepository
     {
-        private readonly exclucv_dbContext _context;
+        private readonly exclucvDb_10_DevContext _context;
 
-        public ApplicationUserRepository(exclucv_dbContext context)
+        public AuthRepository(exclucvDb_10_DevContext context)
         {
             this._context = context;
         }
@@ -19,7 +19,7 @@
             => this._context.User.FirstOrDefault(u => u.Email == email);
 
         public User GetUserInfo(Guid userId)
-            => this._context.User.FirstOrDefault(u => u.UserId == userId);
+            => this._context.User.FirstOrDefault(u => u.Id == userId);
 
         public bool IsExistingUser(string email)
         {

@@ -1,7 +1,7 @@
 ﻿namespace exclucv.Controllers
 {
     using AutoMapper;
-    using exclucv.DAL.Entities;
+    using exclucv.DAL.Models;
     using exclucv.DomainModels.DomainModels;
     using exclucv.Errors.ResponseErrors;
     using exclucv.Services.ServiceContracts;
@@ -14,9 +14,9 @@
     public class AuthController : BaseController
     {
         private readonly IMapper _mapper;
-        private readonly IApplicationUserService _service;
+        private readonly IAuthService _service;
 
-        public AuthController(IMapper mapper, IApplicationUserService service)
+        public AuthController(IMapper mapper, IAuthService service)
         {
             this._mapper = mapper;
             this._service = service;
@@ -31,7 +31,7 @@
             {
                 var user = new User()
                 {
-                    UserId = Guid.NewGuid(),
+                    Id = Guid.NewGuid(),
                     Email = model.Email,
                     Password = model.Password
 
@@ -54,7 +54,7 @@
         {
             try
             {
-                var token = this._service.Login(model);
+                var token = "token"; //this._service.Login(model);
                 return Ok(new { token });
             }
             catch (Exception ex)

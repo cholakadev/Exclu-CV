@@ -1,22 +1,22 @@
 ﻿namespace exclucv.Repository.Repositories
 {
-    using exclucv.DAL.Entities;
+    using exclucv.DAL.Models;
     using exclucv.Repository.RepositoryContracts;
     using System;
     using System.Linq;
 
     public class UploadRepository : IUploadRepository
     {
-        private readonly exclucv_dbContext _context;
+        private readonly exclucvDb_10_DevContext _context;
 
-        public UploadRepository(exclucv_dbContext context)
+        public UploadRepository(exclucvDb_10_DevContext context)
         {
             this._context = context;
         }
 
         public string SaveProfileImagePathToDb(Guid userId, string profileImagePath)
         {
-            var user = this._context.User.FirstOrDefault(u => u.UserId == userId);
+            var user = this._context.User.FirstOrDefault(u => u.Id == userId);
             user.ProfileImage = profileImagePath;
             this._context.SaveChanges();
 

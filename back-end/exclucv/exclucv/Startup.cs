@@ -1,7 +1,6 @@
 ﻿namespace exclucv
 {
     using AutoMapper;
-    using exclucv.DAL.Entities;
     using exclucv.DAL.Models;
     using exclucv.DataMapping;
     using exclucv.Repository.Repositories;
@@ -64,30 +63,26 @@
             });
 
             // Inject AppSetting
-            services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
+            //services.Configure<ApplicationSettings>(Configuration.GetSection("ApplicationSettings"));
 
             services
                 .AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // DbContext configuration
-            services.AddDbContext<exclucv_dbContext>(options =>
+            services.AddDbContext<exclucvDb_10_DevContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
 
 
             // Repository configurations
-            services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IUploadRepository, UploadRepository>();
             services.AddScoped<ITemplateRepository, TemplateRepository>();
-            services.AddScoped<ISkillsRepository, SkillsRepository>();
-            services.AddScoped<IEducationRepository, EducationRepository>();
 
             // Service configurations
-            services.AddScoped<IApplicationUserService, ApplicationUserService>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IUploadService, UploadService>();
-            services.AddScoped<ISkillsService, SkillsService>();
             services.AddScoped<ITemplateService, TemplateService>();
-            services.AddScoped<IEducationService, EducationService>();
 
             services.Configure<IdentityOptions>(options =>
             {

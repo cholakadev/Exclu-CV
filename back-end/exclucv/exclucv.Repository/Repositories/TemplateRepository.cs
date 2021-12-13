@@ -1,5 +1,4 @@
-﻿using exclucv.DAL.Entities;
-using exclucv.DAL.Models.MainInfo;
+﻿using exclucv.DAL.Models;
 using exclucv.Repository.RepositoryContracts;
 using System;
 
@@ -7,24 +6,11 @@ namespace exclucv.Repository.Repositories
 {
     public class TemplateRepository : ITemplateRepository
     {
-        private readonly exclucv_dbContext _context;
+        private readonly exclucvDb_10_DevContext _context;
 
-        public TemplateRepository(exclucv_dbContext context)
+        public TemplateRepository(exclucvDb_10_DevContext context)
         {
             this._context = context;
-        }
-
-        public MainInformation CreateMainInformation(MainInformation mainInformation)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Guid CreateSummary(Summary summary)
-        {
-            this._context.Summary.Add(summary);
-            this._context.SaveChanges();
-
-            return summary.SummaryId;
         }
 
         public Guid CreateTemplate(Template template)
@@ -32,7 +18,7 @@ namespace exclucv.Repository.Repositories
             this._context.Template.Add(template);
             this._context.SaveChanges();
 
-            return template.TemplateId;
+            return template.Id;
         }
     }
 }

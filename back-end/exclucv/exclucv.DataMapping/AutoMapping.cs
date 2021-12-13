@@ -1,7 +1,7 @@
 ﻿namespace exclucv.DataMapping
 {
     using AutoMapper;
-    using exclucv.DAL.Entities;
+    using exclucv.DAL.Models;
     using exclucv.DomainModels.DomainModels;
     using System.Collections.Generic;
 

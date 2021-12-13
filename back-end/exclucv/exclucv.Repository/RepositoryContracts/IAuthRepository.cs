@@ -1,10 +1,10 @@
 ﻿namespace exclucv.Repository.RepositoryContracts
 {
-    using exclucv.DAL.Entities;
+    using exclucv.DAL.Models;
     using System;
     using System.Threading.Tasks;
 
-    public interface IApplicationUserRepository : IRepository<Template>
+    public interface IAuthRepository : IRepository<User>
     {
         Task<User> Register(User user);
         bool IsExistingUser(string email);

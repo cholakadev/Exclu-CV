@@ -1,26 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace exclucv.DAL.Entities
+namespace exclucv.DAL.Models
 {
     public partial class User
     {
         public User()
         {
-            Contact = new HashSet<Contact>();
+            Contacts = new HashSet<Contacts>();
             Template = new HashSet<Template>();
+            UserTracking = new HashSet<UserTracking>();
         }
 
-        public Guid UserId { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public string MobileNumber { get; set; }
+        public Guid Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string ProfileImage { get; set; }
 
-        public virtual ICollection<Contact> Contact { get; set; }
+        public virtual ICollection<Contacts> Contacts { get; set; }
         public virtual ICollection<Template> Template { get; set; }
+        public virtual ICollection<UserTracking> UserTracking { get; set; }
     }
 }
