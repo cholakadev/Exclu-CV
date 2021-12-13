@@ -68,7 +68,8 @@
 
             services
                 .AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+                .AddMvcOptions(mvc => mvc.EnableEndpointRouting = false)
+                .SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             // DbContext configuration
             services.AddDbContext<exclucvDb_10_DevContext>(options =>
@@ -101,7 +102,14 @@
                 o.MemoryBufferThreshold = int.MaxValue;
             });
 
-            services.AddCors();
+            // Cors
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
 
             // JWT Authentication
 
@@ -143,23 +151,24 @@
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseStaticFiles();
-
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
                 RequestPath = new PathString("/Resources")
             });
 
-            app.UseCors(policy => policy.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString())
-                .AllowAnyOrigin()
-                .AllowCredentials()
-                .AllowAnyHeader()
-                .AllowAnyMethod());
+            app.UseCors("CorsPolicy");
 
             app.UseAuthentication();
 
             app.UseMvc();
+
+            app.UseRouting();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }
