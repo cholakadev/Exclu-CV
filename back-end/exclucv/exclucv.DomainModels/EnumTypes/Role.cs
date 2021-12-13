@@ -1,4 +1,4 @@
-﻿namespace exclucv.DomainModels.DomainModels.EnumTypes
+﻿namespace exclucv.DomainModel.EnumTypes
 {
     public enum Role
     {

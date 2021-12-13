@@ -1,8 +1,8 @@
-﻿namespace exclucv.DomainModels.DomainModels
+﻿namespace exclucv.DomainModel
 {
     using System;
 
-    public class SkillModel
+    public class Skill
     {
         public Guid SkillId { get; set; }
         public string Skill1 { get; set; }

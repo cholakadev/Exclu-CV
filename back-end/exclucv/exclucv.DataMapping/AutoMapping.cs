@@ -2,24 +2,23 @@
 {
     using AutoMapper;
     using exclucv.Data.Models;
-    using exclucv.DomainModels.DomainModels;
     using System.Collections.Generic;
 
     public class AutoMapping : Profile
     {
         public AutoMapping()
         {
-            CreateMap<User, RegisterModelResponse>();
+            CreateMap<Data.Models.User, DomainModel.RegisterModelResponse>();
 
-            CreateMap<User, UserModel>();
+            //CreateMap<User, User>();
 
-            CreateMap<Skill, SkillModel>();
-            CreateMap<List<Skill>, List<SkillModel>>();
+            CreateMap<Skill, DomainModel.Skill>();
+            CreateMap<List<Skill>, List<DomainModel.Skill>>();
 
-            CreateMap<Education, EducationModel>();
-            CreateMap<EducationModel, Education>();
-            CreateMap<List<Education>, List<EducationModel>>();
-            CreateMap<List<EducationModel>, List<Education>>();
+            CreateMap<Education, Education>();
+            CreateMap<Education, Education>();
+            CreateMap<List<Education>, List<Education>>();
+            CreateMap<List<Education>, List<Education>>();
         }
     }
 }

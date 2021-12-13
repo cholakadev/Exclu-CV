@@ -1,6 +1,6 @@
 ﻿namespace exclucv.DomainModels.DomainModels
 {
-    using exclucv.DomainModels.DomainModels.EnumTypes;
+    using exclucv.DomainModel.EnumTypes;
 
     public class RegisterModel
     {

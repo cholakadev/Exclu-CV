@@ -1,8 +1,8 @@
-﻿namespace exclucv.DomainModels.DomainModels
+﻿namespace exclucv.DomainModel
 {
     using System;
 
-    public class EducationModel
+    public class Education
     {
         public string Institution { get; set; }
 
@@ -12,8 +12,6 @@
 
         public DateTime StartDate { get; set; }
 
-        public DateTime? EndDate { get; set; }
-
-        public bool? IsActive { get; set; }
+        public DateTime? GraduationDate { get; set; }
     }
 }

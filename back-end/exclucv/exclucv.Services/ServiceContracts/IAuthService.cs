@@ -7,8 +7,8 @@
 
     public interface IAuthService
     {
-        Task<User> Register(User user);
+        Task<Data.Models.User> Register(Data.Models.User user);
         //string Login(LoginModel loginModel);
-        User GetUserInfo(Guid userId);
+        Data.Models.User GetUserInfo(Guid userId);
     }
 }
