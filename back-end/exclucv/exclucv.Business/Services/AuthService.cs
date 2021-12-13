@@ -1,13 +1,12 @@
-﻿namespace exclucv.Core.Services
+﻿namespace exclucv.Business.Services
 {
     using exclucv.Core.Http;
     using exclucv.Security.UserSecurity.Password;
     using System;
     using System.Threading.Tasks;
     using exclucv.Core.ServiceContracts;
-    using exclucv.Data.RepositoryContracts;
     using AutoMapper;
-    using exclucv.Domain.DomainModel;
+    using exclucv.Data.Contracts.RepositoryContracts;
 
     public class AuthService : IAuthService
     {
@@ -53,24 +52,24 @@
         //    return token;
         //}
 
-        public async Task<User> Register(RegisterRequest request)
-        {
-            if (!this._repository.IsExistingUser(request.Email))
-            {
-                request.Password = PasswordCipher.Encode(request.Password);
-                var userSource = new User();
-                userSource.Id = Guid.NewGuid();
-                userSource.Email = request.Email;
-                //var userEntity = this._mapper.Map<User, DomainModel.User>()
-                //var registereduser = await this._repository.Register(user);
-                //this._templateservice.createtemplate(user.id);
+        //public async Task<DomainModel.User> Register(RegisterRequest request)
+        //{
+        //    if (!this._repository.IsExistingUser(request.Email))
+        //    {
+        //        request.Password = PasswordCipher.Encode(request.Password);
+        //        var userSource = new DomainModel.User();
+        //        userSource.Id = Guid.NewGuid();
+        //        userSource.Email = request.Email;
+        //        //var userEntity = this._mapper.Map<User, DomainModel.User>()
+        //        //var registereduser = await this._repository.Register(user);
+        //        //this._templateservice.createtemplate(user.id);
 
-                return new User();
-            }
-            else
-            {
-                throw new Exception("Email is already taken.");
-            }
-        }
+        //        return new DomainModel.User();
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Email is already taken.");
+        //    }
+        //}
     }
 }

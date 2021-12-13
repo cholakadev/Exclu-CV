@@ -1,4 +1,4 @@
-﻿namespace exclucv.Data.RepositoryContracts
+﻿namespace exclucv.Data.Contracts.RepositoryContracts
 {
     using System;
 

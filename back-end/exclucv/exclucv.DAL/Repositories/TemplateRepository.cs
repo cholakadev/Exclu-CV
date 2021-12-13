@@ -1,7 +1,7 @@
 ﻿namespace exclucv.Data.Repositories
 {
+    using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Data.Models;
-    using exclucv.Data.RepositoryContracts;
     using System;
 
 
@@ -14,12 +14,12 @@
             this._context = context;
         }
 
-        public Guid CreateTemplate(Template template)
+        public Guid CreateTemplate(DomainModel.Template template)
         {
-            this._context.Template.Add(template);
-            this._context.SaveChanges();
+            //this._context.Template.Add(template);
+            //this._context.SaveChanges();
 
-            return template.Id;
+            return Guid.NewGuid();// template.Id;
         }
     }
 }

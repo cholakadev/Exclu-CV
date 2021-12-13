@@ -24,7 +24,7 @@
         {
             try
             {
-                var user = await this._service.Register(request);
+                //var user = await this._service.Register(request);
                 return StatusCode(200, new { });
             }
             catch (Exception ex)

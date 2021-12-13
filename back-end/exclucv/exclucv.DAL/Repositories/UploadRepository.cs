@@ -1,7 +1,7 @@
 ﻿namespace exclucv.Data.Repositories
 {
+    using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Data.Models;
-    using exclucv.Data.RepositoryContracts;
     using System;
     using System.Linq;
 

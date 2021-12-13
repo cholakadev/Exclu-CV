@@ -27,6 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\exclucv.Business\exclucv.Business.csproj" />
 		<ProjectReference Include="..\exclucv.Services\exclucv.Core.csproj" />
 	</ItemGroup>
 

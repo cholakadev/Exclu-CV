@@ -1,6 +1,6 @@
-﻿namespace exclucv.Services.Services
+﻿namespace exclucv.Business.Services
 {
-    using exclucv.Data.RepositoryContracts;
+    using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Services.ServiceContracts;
 
     public class TemplateService : ITemplateService

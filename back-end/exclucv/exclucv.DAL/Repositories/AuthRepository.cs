@@ -1,7 +1,7 @@
 ﻿namespace exclucv.Data.Repositories
 {
+    using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Data.Models;
-    using exclucv.Data.RepositoryContracts;
     using System;
     using System.Linq;
     using System.Threading.Tasks;
@@ -15,33 +15,33 @@
             this._context = context;
         }
 
-        public User GetUserByEmail(string email)
-            => this._context.User.FirstOrDefault(u => u.Email == email);
+        //public User GetUserByEmail(string email)
+        //    => this._context.User.FirstOrDefault(u => u.Email == email);
 
-        public User GetUserInfo(Guid userId)
-            => this._context.User.FirstOrDefault(u => u.Id == userId);
+        //public User GetUserInfo(Guid userId)
+        //    => this._context.User.FirstOrDefault(u => u.Id == userId);
 
-        public bool IsExistingUser(string email)
-        {
-            User user = this._context.User.FirstOrDefault(u => u.Email == email);
+        //public bool IsExistingUser(string email)
+        //{
+        //    User user = this._context.User.FirstOrDefault(u => u.Email == email);
 
-            if (user == null)
-            {
-                return false;
-            }
+        //    if (user == null)
+        //    {
+        //        return false;
+        //    }
 
-            return true;
-        }
+        //    return true;
+        //}
 
-        public async Task<User> Register(User user)
-        {
-            if (user != null)
-            {
-                await this._context.User.AddAsync(user);
-                await this._context.SaveChangesAsync();
-            }
+        //public async Task<User> Register(DomainModel.User user)
+        //{
+        //    if (user != null)
+        //    {
+        //        await this._context.User.AddAsync(user);
+        //        await this._context.SaveChangesAsync();
+        //    }
 
-            return user;
-        }
+        //    return user;
+        //}
     }
 }

@@ -1,14 +1,13 @@
 ﻿namespace exclucv
 {
     using AutoMapper;
+    using exclucv.Business.Services;
     using exclucv.Core.ServiceContracts;
-    using exclucv.Core.Services;
+    using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Data.Models;
     using exclucv.Data.Repositories;
-    using exclucv.Data.RepositoryContracts;
     using exclucv.Services;
     using exclucv.Services.ServiceContracts;
-    using exclucv.Services.Services;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
     using Microsoft.AspNetCore.Builder;
