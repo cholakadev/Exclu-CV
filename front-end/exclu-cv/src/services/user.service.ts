@@ -48,14 +48,14 @@ export class UserService {
       ConfirmPassword: this.formModel.value.ConfirmPassword,
     };
 
-    return this.http.post(this.BaseURI + '/user/registration', formData);
+    return this.http.post(this.BaseURI + '/auth/register', formData);
   }
 
   login(formData) {
-    return this.http.post(this.BaseURI + '/user/login', formData);
+    return this.http.post(this.BaseURI + '/auth/login', formData);
   }
 
   getCurrentUser() {
-    return this.http.get(this.BaseURI + '/user/currentUser');
+    return this.http.get(this.BaseURI + '/auth/currentUser');
   }
 }
