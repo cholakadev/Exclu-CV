@@ -1,4 +1,4 @@
-﻿namespace exclucv.Core.DomainModel
+﻿namespace exclucv.Domain.DomainModel
 {
     using System;
 

@@ -6,14 +6,18 @@
     using System.Threading.Tasks;
     using exclucv.Core.ServiceContracts;
     using exclucv.Data.RepositoryContracts;
+    using AutoMapper;
+    using exclucv.Domain.DomainModel;
 
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _repository;
+        private readonly IMapper _mapper;
 
-        public AuthService(IAuthRepository repository)
+        public AuthService(IAuthRepository repository, IMapper mapper)
         {
             this._repository = repository;
+            this._mapper = mapper;
         }
 
         //public string Login(LoginModel loginModel)
@@ -49,15 +53,19 @@
         //    return token;
         //}
 
-        public async Task<DomainModel.User> Register(RegisterRequest request)
+        public async Task<User> Register(RegisterRequest request)
         {
             if (!this._repository.IsExistingUser(request.Email))
             {
                 request.Password = PasswordCipher.Encode(request.Password);
-                //var registeredUser = await this._repository.Register(user);
-                //this._templateService.CreateTemplate(user.Id);
+                var userSource = new User();
+                userSource.Id = Guid.NewGuid();
+                userSource.Email = request.Email;
+                //var userEntity = this._mapper.Map<User, DomainModel.User>()
+                //var registereduser = await this._repository.Register(user);
+                //this._templateservice.createtemplate(user.id);
 
-                return new DomainModel.User();
+                return new User();
             }
             else
             {

@@ -2,7 +2,6 @@
 {
     using exclucv.Core.Http;
     using exclucv.Core.ServiceContracts;
-    using exclucv.Errors.ResponseErrors;
     using Microsoft.AspNetCore.Mvc;
     using System;
     using System.Threading.Tasks;
@@ -31,7 +30,7 @@
             catch (Exception ex)
             {
 
-                return StatusCode(406, new AbortedRegistrationError(ex.Message, false));
+                return StatusCode(406);
             }
         }
 

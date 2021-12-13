@@ -1,6 +1,5 @@
 ﻿namespace exclucv.Controllers
 {
-    using exclucv.Errors.ResponseErrors;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
     using System;
@@ -33,7 +32,7 @@
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new AbortedUploadError(ex.Message, false));
+                return StatusCode(500);
             }
         }
     }

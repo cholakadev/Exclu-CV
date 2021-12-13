@@ -1,12 +1,12 @@
 ﻿namespace exclucv.Core.ServiceContracts
 {
     using exclucv.Core.Http;
-    using System;
+    using exclucv.Domain.DomainModel;
     using System.Threading.Tasks;
 
     public interface IAuthService
     {
-        Task<DomainModel.User> Register(RegisterRequest user);
+        Task<User> Register(RegisterRequest user);
 
         //string Login(LoginModel loginModel);
     }
