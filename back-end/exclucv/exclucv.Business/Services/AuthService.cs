@@ -1,22 +1,33 @@
 ﻿namespace exclucv.Business.Services
 {
-    using exclucv.Core.Http;
-    using exclucv.Security.UserSecurity.Password;
     using System;
-    using System.Threading.Tasks;
+    using exclucv.Core.Http;
     using exclucv.Core.ServiceContracts;
-    using AutoMapper;
     using exclucv.Data.Contracts.RepositoryContracts;
+    using exclucv.Security.UserSecurity.Password;
 
     public class AuthService : IAuthService
     {
         private readonly IAuthRepository _repository;
-        private readonly IMapper _mapper;
 
-        public AuthService(IAuthRepository repository, IMapper mapper)
+        public AuthService(IAuthRepository repository)
         {
             this._repository = repository;
-            this._mapper = mapper;
+        }
+
+        public void Register(RegisterRequest request)
+        {
+            if (this._repository.IsExistingUser(request.Email))
+                throw new ArgumentException("Registration failed");
+
+            var encodedPassword = PasswordCipher.Encode(request.Password);
+
+            var user = new DomainModel.User();
+            user.Id = Guid.NewGuid();
+            user.Email = request.Email;
+            user.Password = encodedPassword;
+
+            this._repository.Register(user);
         }
 
         //public string Login(LoginModel loginModel)
@@ -50,26 +61,6 @@
         //    var securityToken = tokenHandler.CreateToken(tokenDescriptor);
         //    var token = tokenHandler.WriteToken(securityToken);
         //    return token;
-        //}
-
-        //public async Task<DomainModel.User> Register(RegisterRequest request)
-        //{
-        //    if (!this._repository.IsExistingUser(request.Email))
-        //    {
-        //        request.Password = PasswordCipher.Encode(request.Password);
-        //        var userSource = new DomainModel.User();
-        //        userSource.Id = Guid.NewGuid();
-        //        userSource.Email = request.Email;
-        //        //var userEntity = this._mapper.Map<User, DomainModel.User>()
-        //        //var registereduser = await this._repository.Register(user);
-        //        //this._templateservice.createtemplate(user.id);
-
-        //        return new DomainModel.User();
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Email is already taken.");
-        //    }
         //}
     }
 }

@@ -1,6 +1,5 @@
 ﻿namespace exclucv.Controllers
 {
-    using AutoMapper;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
 
@@ -9,12 +8,10 @@
     public class TemplateController : BaseController
     {
         private readonly ITemplateService _service;
-        private readonly IMapper _mapper;
 
-        public TemplateController(ITemplateService service, IMapper mapper)
+        public TemplateController(ITemplateService service)
         {
             this._service = service;
-            this._mapper = mapper;
         }
 
         //[HttpPost]

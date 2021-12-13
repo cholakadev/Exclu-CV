@@ -5,7 +5,7 @@
 
     public interface IAuthService
     {
-        //Task<User> Register(RegisterRequest user);
+        void Register(RegisterRequest user);
 
         //string Login(LoginModel loginModel);
     }

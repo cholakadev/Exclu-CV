@@ -3,8 +3,6 @@
     using exclucv.Core.Http;
     using exclucv.Core.ServiceContracts;
     using Microsoft.AspNetCore.Mvc;
-    using System;
-    using System.Threading.Tasks;
 
     [Route("api/auth")]
     [ApiController]
@@ -20,18 +18,10 @@
         [HttpPost]
         [Route("register")]
         // POST: /api/user/registration
-        public async Task<IActionResult> Register(RegisterRequest request)
+        public ActionResult Register(RegisterRequest request)
         {
-            try
-            {
-                //var user = await this._service.Register(request);
-                return StatusCode(200, new { });
-            }
-            catch (Exception ex)
-            {
-
-                return StatusCode(406);
-            }
+            this._service.Register(request);
+            return StatusCode(200);
         }
 
         //[HttpPost]

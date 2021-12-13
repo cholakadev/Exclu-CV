@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\exclucv.Core\exclucv.Core.csproj" />
     <ProjectReference Include="..\exclucv.Data.Contracts\exclucv.Data.Contracts.csproj" />
-    <ProjectReference Include="..\exclucv.Services\exclucv.Core.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,8 +5,9 @@
 
     public interface IAuthRepository : IRepository<DomainModel.User>
     {
-        //Task<DomainModel.User> Register(DomainModel.User user);
-        //bool IsExistingUser(string email);
+        void Register(DomainModel.User user);
+
+        bool IsExistingUser(string email);
         //DomainModel.User GetUserByEmail(string email);
         //DomainModel.User GetUserInfo(Guid userId);
     }

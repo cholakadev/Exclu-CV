@@ -19,6 +19,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="AutoMapper" Version="10.1.1" />
 		<PackageReference Include="Microsoft.AspNetCore.App" />
 		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.12" />
 		<PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
@@ -28,7 +29,8 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\exclucv.Business\exclucv.Business.csproj" />
-		<ProjectReference Include="..\exclucv.Services\exclucv.Core.csproj" />
+		<ProjectReference Include="..\exclucv.Core\exclucv.Core.csproj" />
+		<ProjectReference Include="..\exclucv.Data\exclucv.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

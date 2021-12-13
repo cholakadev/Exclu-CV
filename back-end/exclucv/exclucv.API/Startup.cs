@@ -7,7 +7,6 @@
     using exclucv.Data.Contracts.RepositoryContracts;
     using exclucv.Data.Models;
     using exclucv.Data.Repositories;
-    using exclucv.Services;
     using exclucv.Services.ServiceContracts;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
