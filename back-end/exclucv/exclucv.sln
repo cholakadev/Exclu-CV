@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Data", "exclucv.DAL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Repository", "exclucv.Repository\exclucv.Repository.csproj", "{0314CE26-F881-4C57-801D-D9B4261A5CA1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.DataMapping", "exclucv.DataMapping\exclucv.DataMapping.csproj", "{615A7ADE-C5CB-49EB-A58D-8E598C49A496}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.DomainModels", "exclucv.DomainModels\exclucv.DomainModels.csproj", "{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "exclucv.Security", "exclucv.Security\exclucv.Security.csproj", "{58025C17-C24A-41B8-8160-91879B86B97B}"
@@ -39,10 +37,6 @@ Global
 		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0314CE26-F881-4C57-801D-D9B4261A5CA1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{615A7ADE-C5CB-49EB-A58D-8E598C49A496}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{615A7ADE-C5CB-49EB-A58D-8E598C49A496}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{615A7ADE-C5CB-49EB-A58D-8E598C49A496}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{615A7ADE-C5CB-49EB-A58D-8E598C49A496}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C6BD34F-EB3D-46E1-B618-3EE7DCCC54D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
