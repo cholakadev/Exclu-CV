@@ -8,6 +8,7 @@
     {
         public AutoMapping()
         {
+            CreateMap<DomainModel.User, User>();
             CreateMap<Education, Education>();
             CreateMap<Education, Education>();
             CreateMap<List<Education>, List<Education>>();

@@ -33,7 +33,7 @@
         public bool IsExistingUser(string email)
         {
             User user = this._context.User
-                .SingleOrDefault(u => u.Email == email);
+                .FirstOrDefault(u => u.Email == email);
 
             if (user == null)
             {
