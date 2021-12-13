@@ -6,8 +6,8 @@ import { ISkill } from './../interfaces/main';
 export const environment = {
   production: false,
   exclucv: {
-    baseUrl: 'http://localhost:52856/api',
-  }
+    baseUrl: 'http://localhost:3777/api',
+  },
 };
 
 export class GlobalConstants {
