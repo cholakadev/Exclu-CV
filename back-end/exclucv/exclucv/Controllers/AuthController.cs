@@ -9,21 +9,21 @@
     using System;
     using System.Threading.Tasks;
 
-    [Route("api/user")]
+    [Route("api/auth")]
     [ApiController]
-    public class ApplicationUserController : BaseController
+    public class AuthController : BaseController
     {
         private readonly IMapper _mapper;
         private readonly IApplicationUserService _service;
 
-        public ApplicationUserController(IMapper mapper, IApplicationUserService service)
+        public AuthController(IMapper mapper, IApplicationUserService service)
         {
             this._mapper = mapper;
             this._service = service;
         }
 
         [HttpPost]
-        [Route("registration")]
+        [Route("register")]
         // POST: /api/user/registration
         public async Task<IActionResult> Register(RegisterModel model)
         {
